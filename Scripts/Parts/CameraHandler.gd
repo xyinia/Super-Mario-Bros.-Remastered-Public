@@ -49,16 +49,6 @@ func handle_camera(delta: float) -> void:
 	
 	do_limits()
 	camera.global_position = camera_position + camera_offset
-	
-	# horizontal adjusgments
-	# if the position is matching the camera, start scrolling towards the center
-	if global_position.x >= camera_position.x:
-		position.x = move_toward(position.x,0.0,delta * 30.0)
-	else:
-		# if the camera if behind the middle of the screen, calculate the current difference
-		position.x = max(min(camera_position.x-global_position.x,SCROLL_DIFFERENCE),position.x)
-	
-	
 	update_camera_barriers()
 
 func update_camera_barriers() -> void:
@@ -89,6 +79,14 @@ func handle_horizontal_scrolling(delta: float) -> void:
 			scrolling = true
 			var offset = 0
 			camera_position.x = global_position.x + offset
+	
+	# horizontal adjusgments
+	# if the position is matching the camera, start scrolling towards the center
+	if global_position.x >= camera_position.x:
+		position.x = move_toward(position.x,0.0,delta * max(30.0, abs(true_velocity.x / 2.3)))
+	else:
+		# if the camera if behind the middle of the screen, calculate the current difference
+		position.x = max(min(camera_position.x-global_position.x,SCROLL_DIFFERENCE),position.x)
 
 
 func handle_vertical_scrolling(_delta: float) -> void:
