@@ -3,13 +3,6 @@ extends Control
 signal cancelled
 var is_active := false
 
-func _ready() -> void:
-	update()
-	Global.level_theme_changed.connect(update)
-
-func update() -> void:
-	$AudioStreamPlayer.stream = $ResourceGetter.get_resource($AudioStreamPlayer.stream)
-
 func _physics_process(delta: float) -> void:
 	modulate.a = lerpf(modulate.a, int(is_active), delta * 15)
 	if Input.is_action_just_released("ui_back") and is_active:
