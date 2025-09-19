@@ -26,6 +26,8 @@ func create_template() -> void:
 			var resource = load(i)
 			if resource is Texture:
 				resource.get_image().save_png(destination)
+			elif resource is AudioStreamWAV:
+				resource.save_to_wav(destination)
 			elif resource is AudioStream:
 				var file = FileAccess.open(destination, FileAccess.WRITE)
 				file.store_buffer(resource.data)
