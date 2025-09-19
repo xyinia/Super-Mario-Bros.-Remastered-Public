@@ -443,6 +443,7 @@ func handle_wing_flight(delta: float) -> void:
 	flight_meter -= delta
 	if flight_meter <= 0 && $Sprite/Wings.visible:
 		AudioManager.stop_music_override(AudioManager.MUSIC_OVERRIDES.WING)
+		gravity = FALL_GRAVITY
 	$Sprite/Wings.visible = flight_meter >= 0
 	if flight_meter < 0:
 		return
