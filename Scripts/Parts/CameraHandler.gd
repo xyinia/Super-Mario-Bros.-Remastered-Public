@@ -69,6 +69,8 @@ func handle_horizontal_scrolling(delta: float) -> void:
 		cam_direction = 1
 		if global_position.x >= camera_position.x:
 			var offset = 0
+			if camera_position.x <= global_position.x - 4:
+				offset = camera_position.x - global_position.x + abs(true_velocity.x * delta)
 			scrolling = true
 			camera_position.x = global_position.x + offset
 	
@@ -78,6 +80,8 @@ func handle_horizontal_scrolling(delta: float) -> void:
 		if global_position.x <= camera_position.x:
 			scrolling = true
 			var offset = 0
+			if camera_position.x >= global_position.x + 4:
+				offset = camera_position.x - global_position.x - abs(true_velocity.x * delta)
 			camera_position.x = global_position.x + offset
 	
 	# horizontal adjusgments
