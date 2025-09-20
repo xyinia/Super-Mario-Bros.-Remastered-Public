@@ -304,16 +304,16 @@ func transition_to_scene(scene_path := "") -> void:
 
 
 
-func do_fake_transition() -> void:
+func do_fake_transition(duration := 0.2) -> void:
 	if fade_transition:
 		$Transition/AnimationPlayer.play("FadeIn")
 		await $Transition/AnimationPlayer.animation_finished
-		await get_tree().create_timer(0.2, false).timeout
+		await get_tree().create_timer(duration, false).timeout
 		$Transition/AnimationPlayer.play_backwards("FadeIn")
 	else:
 		%TransitionBlock.modulate.a = 1
 		$Transition.show()
-		await get_tree().create_timer(0.25, false).timeout
+		await get_tree().create_timer(duration + 0.05, false).timeout
 		$Transition.hide()
 
 func freeze_screen() -> void:

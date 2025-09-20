@@ -12,6 +12,7 @@ var game_style := "SMBLL"
 var difficulty := 0
 var file_path := ""
 var is_downloaded := false
+var thumbnail: Texture = null
 var level_id := ""
 var idx := 0
 
@@ -55,9 +56,14 @@ func _ready() -> void:
 	update_visuals()
 
 func update_visuals() -> void:
-	if is_downloaded:
-		%LevelIcon.texture = ImageTexture.create_from_image(Image.load_from_file("user://custom_levels/downloaded/thumbnails/" + level_id + ".png"))
+	if is_downloaded and FileAccess.file_exists("user://custom_levels/downloaded/thumbnails/" + level_id + ".png"):
+		thumbnail = ImageTexture.create_from_image(Image.load_from_file("user://custom_levels/downloaded/thumbnails/" + level_id + ".png"))
+		%Thumbnail.texture = thumbnail
+		%LevelIcon.hide()
+		%Thumbnail.show()
 	else:
+		%Thumbnail.hide()
+		%LevelIcon.show()
 		%LevelIcon.texture = ResourceSetter.get_resource(ICON_TEXTURES[level_time])
 		%LevelIcon.region_rect = THEME_RECTS[level_theme]
 	

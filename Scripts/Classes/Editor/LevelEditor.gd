@@ -657,6 +657,7 @@ func transition_to_sublevel(sub_lvl_idx := 0) -> void:
 		LevelPersistance.reset_states()
 	sub_level_id = sub_lvl_idx
 	$LevelLoader.load_level(sub_lvl_idx)
+	Global.do_fake_transition(0.1)
 	await get_tree().physics_frame
 	if (play_pipe_transition or play_door_transition) and play_transition:
 		parse_tiles()

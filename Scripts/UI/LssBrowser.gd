@@ -79,6 +79,7 @@ func spawn_containers() -> void:
 		container.level_author = i.author.username
 		container.difficulty = i.difficulty
 		container.level_id = i._id
+		container.ratings = i.rates
 		container.level_selected.connect(show_info)
 		if i.has("thumbnail"):
 			if i.thumbnail != null:
