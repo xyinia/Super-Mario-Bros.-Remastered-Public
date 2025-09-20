@@ -37,7 +37,6 @@ func setup_visuals() -> void:
 	if featured:
 		self_modulate = Color.YELLOW
 	var idx := 0
-	print(difficulty)
 	var difficulty_int = DIFFICULTY_TO_STAR_TRANSLATION[difficulty]
 	for i in %DifficultyStars.get_children():
 		i.region_rect.position.x = 32 if idx > difficulty_int else [0, 8, 8, 16, 24][difficulty_int]
@@ -72,7 +71,6 @@ func calculate_rating() -> int:
 	for i in ratings:
 		total += i
 	rating = total / float(ratings.size())
-	print(rating)
 	return rating
 
 func on_request_completed(result: int, response_code: int, headers: PackedStringArray, body: PackedByteArray) -> void:
