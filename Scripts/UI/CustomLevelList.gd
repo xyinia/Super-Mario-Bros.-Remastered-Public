@@ -57,6 +57,9 @@ func get_levels(path := "user://custom_levels") -> void:
 		file.close()
 		var data = json["Levels"][0]["Data"].split("=")
 		var info = json["Info"]
+		container.is_downloaded = path.contains("/downloaded/")
+		if container.is_downloaded:
+			container.level_id = path.get_file().replace(".lvl", "")
 		container.level_name = info["Name"]
 		container.level_author = info["Author"]
 		container.level_desc = info["Description"]
