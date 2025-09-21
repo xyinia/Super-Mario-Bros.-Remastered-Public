@@ -113,7 +113,7 @@ func write_save_to_file(json := {}, path := "") -> void:
 	file.close()
 
 func apply_save(json := {}) -> void:
-	Global.world_num = clamp(json["World"], 1, 8)
+	Global.world_num = json.get_or_add("World", 1)
 	Global.level_num = json.get_or_add("Level", 1)
 	Global.lives = json["Lives"]
 	Global.coins = json["Coins"]
