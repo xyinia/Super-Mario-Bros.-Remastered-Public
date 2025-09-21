@@ -240,11 +240,7 @@ func _physics_process(delta: float) -> void:
 		stomp_combo = 0
 	elif velocity.y > 15:
 		can_bump_sfx = true
-	var old_water = in_water
-	if $Hitbox.monitoring:
-		in_water = $Hitbox.get_overlapping_areas().any(func(area: Area2D): return area is WaterArea) or $WaterDetect.get_overlapping_bodies().is_empty() == false
-	if old_water != in_water and in_water == false and flight_meter <= 0:
-		water_exited()
+	handle_water_detection()
 	if $SkidSFX.playing:
 		if (is_actually_on_floor() and skidding) == false:
 			$SkidSFX.stop()
@@ -252,6 +248,13 @@ func _physics_process(delta: float) -> void:
 		$SkidSFX.play()
 
 const BUBBLE_PARTICLE = preload("uid://bwjae1h1airtr")
+
+func handle_water_detection() -> void:
+	var old_water = in_water
+	if $Hitbox.monitoring:
+		in_water = $Hitbox.get_overlapping_areas().any(func(area: Area2D): return area is WaterArea) or $WaterDetect.get_overlapping_bodies().is_empty() == false
+	if old_water != in_water and in_water == false and flight_meter <= 0:
+		water_exited()
 
 func summon_bubble() -> void:
 	var bubble = BUBBLE_PARTICLE.instantiate()
