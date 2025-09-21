@@ -16,6 +16,9 @@ static var sublevel_id := 0
 static var old_state := [[], []]
 
 func _enter_tree() -> void:
+	if Global.level_editor != null:
+		if sublevel_id != Global.level_editor.sub_level_id and passed:
+			passed = false
 	if passed:
 		LevelPersistance.active_nodes = old_state.duplicate(true)
 
