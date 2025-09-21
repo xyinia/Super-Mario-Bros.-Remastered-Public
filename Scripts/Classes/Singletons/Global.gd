@@ -117,7 +117,7 @@ var can_time_tick := true:
 		if value == false:
 			pass
 
-var player_power_states := "0000"
+var player_power_states := "1000"
 
 var connected_players := 1
 
