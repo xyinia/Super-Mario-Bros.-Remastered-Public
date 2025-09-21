@@ -337,6 +337,10 @@ func check_for_medal_achievement() -> void:
 				has_silver_levels_any = false
 			if best_level_any_times[i] > LEVEL_GOLD_ANY_TIMES[Global.current_campaign][i] * MEDAL_CONVERSIONS[0]:
 				has_bronze_levels_any = false
+		else:
+			has_gold_levels_any = false
+			has_silver_levels_any = false
+			has_bronze_levels_any = false
 	
 	var world := 0
 	for i in best_level_warpless_times:
