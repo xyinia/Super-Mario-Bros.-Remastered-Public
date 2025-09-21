@@ -355,12 +355,13 @@ func check_for_medal_achievement() -> void:
 			level += 1
 		world += 1
 	
-	if marathon_best_any_time <= GOLD_ANY_TIMES[Global.current_campaign] and marathon_best_warpless_time <= GOLD_WARPLESS_TIMES[Global.current_campaign]:
-		has_gold_full = true
-	if marathon_best_any_time <= GOLD_ANY_TIMES[Global.current_campaign] * MEDAL_CONVERSIONS[1] and marathon_best_warpless_time <= GOLD_WARPLESS_TIMES[Global.current_campaign] * MEDAL_CONVERSIONS[1]:
-		has_silver_full = true
-	if marathon_best_any_time <= GOLD_ANY_TIMES[Global.current_campaign] * MEDAL_CONVERSIONS[0] and marathon_best_warpless_time <= GOLD_WARPLESS_TIMES[Global.current_campaign] * MEDAL_CONVERSIONS[0]:
-		has_bronze_full = true
+	if marathon_best_any_time >= 0 and marathon_best_warpless_time >= 0:
+		if marathon_best_any_time <= GOLD_ANY_TIMES[Global.current_campaign] and marathon_best_warpless_time <= GOLD_WARPLESS_TIMES[Global.current_campaign]:
+			has_gold_full = true
+		if marathon_best_any_time <= GOLD_ANY_TIMES[Global.current_campaign] * MEDAL_CONVERSIONS[1] and marathon_best_warpless_time <= GOLD_WARPLESS_TIMES[Global.current_campaign] * MEDAL_CONVERSIONS[1]:
+			has_silver_full = true
+		if marathon_best_any_time <= GOLD_ANY_TIMES[Global.current_campaign] * MEDAL_CONVERSIONS[0] and marathon_best_warpless_time <= GOLD_WARPLESS_TIMES[Global.current_campaign] * MEDAL_CONVERSIONS[0]:
+			has_bronze_full = true
 	
 	if has_gold_levels_warpless and has_gold_levels_any and has_gold_full:
 		match Global.current_campaign:
