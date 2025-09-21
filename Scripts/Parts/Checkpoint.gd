@@ -12,7 +12,7 @@ static var passed := false
 static var respawn_position := Vector2.ZERO
 static var level := ""
 static var sublevel_id := 0
-
+static var keys_collected := 0
 static var old_state := [[], []]
 
 func _enter_tree() -> void:
@@ -37,6 +37,7 @@ func _ready() -> void:
 			i.global_position = self.global_position
 			i.reset_physics_interpolation()
 			i.recenter_camera()
+		KeyItem.total_collected = keys_collected
 		respawned.emit()
 
 
@@ -48,6 +49,7 @@ func on_area_entered(area: Area2D) -> void:
 		var player: Player = area.owner
 		player.passed_checkpoint()
 		passed = true
+		keys_collected = KeyItem.total_collected
 		old_state = LevelPersistance.active_nodes.duplicate(true)
 		Level.start_level_path = Global.current_level.scene_file_path
 		if Global.current_game_mode == Global.GameMode.LEVEL_EDITOR or Global.current_game_mode == Global.GameMode.CUSTOM_LEVEL:
