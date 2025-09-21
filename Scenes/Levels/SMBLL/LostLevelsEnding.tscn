@@ -415,6 +415,11 @@ color = Color(0, 0, 0, 0)
 time_of_day = 1
 primary_layer = 1
 
+[node name="ResourceSetter" parent="LevelBG/SkyLayer/Sky" index="0"]
+force_properties = {
+"Time": "Night"
+}
+
 [node name="ResourceSetter" parent="LevelBG/PrimaryLayer/Bush" index="0"]
 process_mode = 3
 force_properties = {

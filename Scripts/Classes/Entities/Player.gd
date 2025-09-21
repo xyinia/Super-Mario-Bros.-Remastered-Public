@@ -597,7 +597,7 @@ func get_power_up(power_name := "") -> void:
 	refresh_hitbox()
 
 func check_for_block() -> void:
-	if test_move(global_transform, Vector2.UP * 2):
+	if test_move(global_transform, (Vector2.UP * gravity_vector) * 4):
 		crouching = true
 
 func power_up_animation(new_power_state := "") -> void:
