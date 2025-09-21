@@ -28,12 +28,13 @@ A Remake / Celebration of the original 'Super Mario Bros.' games. Features new l
 4. Extract and run
 5. Enjoy!
 
-### macOS
+### macOS (Unofficial)
 1. Go to the [macOS repo](https://github.com/yuriko-shimizu/Super-Mario-Bros.-Remastered-Public-Mac/releases)
-2. Look for the latest version
-3. Download the .zip file
-4. Extract, drag into the 'Applictions' folder and run
-5. Enjoy!
+2. (NOTE: THIS IS AN UNOFFICIAL FORK OF THE GAME)
+3. Look for the latest version
+4. Download the .zip file
+5. Extract, drag into the 'Applictions' folder and run
+6. Enjoy!
 
 ## Importing for editing
 1. Download the source
