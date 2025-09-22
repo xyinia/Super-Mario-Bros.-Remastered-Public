@@ -103,7 +103,8 @@ func in_game() -> void:
 
 func run_player_check(player: Player) -> void:
 	# guzlad: Added support for characters with a hitbox height below 1.0 to enter pipes underwater
-	if Global.player_action_pressed(get_input_direction(enter_direction), player.player_id) and can_enter and (player.is_on_floor() or enter_direction == 1 or player.gravity_vector != Vector2.DOWN or (!player.is_on_floor() and enter_direction == 3)) and player.state_machine.state.name == "Normal":		can_enter = false
+	if Global.player_action_pressed(get_input_direction(enter_direction), player.player_id) and can_enter and (player.is_on_floor() or enter_direction == 1 or player.gravity_vector != Vector2.DOWN or (!player.is_on_floor() and enter_direction == 3)) and player.state_machine.state.name == "Normal":
+		can_enter = false
 		pipe_entered.emit()
 		DiscoLevel.can_meter_tick = false
 		Level.in_vine_level = false
