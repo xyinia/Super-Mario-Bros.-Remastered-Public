@@ -122,7 +122,7 @@ wait_time = 3.0
 script = ExtResource("4_f1jdk")
 properties = Array[String](["item", "direction"])
 filters = Dictionary[String, String]({
-"item": "can_be_dispensed"
+"item": "can_pipe_gen"
 })
 
 [node name="Check" type="RayCast2D" parent="."]
