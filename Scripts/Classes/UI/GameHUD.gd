@@ -7,10 +7,17 @@ static var character_icons := [preload("res://Assets/Sprites/Players/Mario/LifeI
 
 const RANK_COLOURS := {"F": Color.DIM_GRAY, "D": Color.WEB_MAROON, "C": Color.PALE_GREEN, "B": Color.DODGER_BLUE, "A": Color.RED, "S": Color.GOLD, "P": Color.PURPLE}
 
+var delta_time := 0.0
+
 func _ready() -> void:
 	Global.level_theme_changed.connect(update_character_info)
 
-func _process(_delta: float) -> void:
+func _process(delta: float) -> void:
+	if not get_tree().paused and $Timer.paused:
+		delta_time += delta
+	if delta_time >= 1:
+		delta_time -= 1
+		on_timeout()
 	handle_main_hud()
 	handle_pausing()
 
@@ -20,7 +27,7 @@ func handle_main_hud() -> void:
 	$Main/RedCoins.hide()
 	$Main/CoinCount.show()
 	%Combo.hide()
-	
+	$Timer.paused = Settings.file.difficulty.timer_style == 1
 	$%Time.show()
 	%Stopwatch.hide()
 	%PB.hide()
