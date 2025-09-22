@@ -12,7 +12,7 @@ var BOUNCE_HEIGHT := 200.0             # The strength at which the player bounce
 var BOUNCE_JUMP_HEIGHT := 300.0        # The strength at which the player bounces off enemies while holding jump, measured in px/sec 
 
 var FALL_GRAVITY := 25.0               # The player's gravity while falling, measured in px/frame
-var MAX_FALL_SPEED := 280              # The player's maximum fall speed, measured in px/sec
+var MAX_FALL_SPEED := 280.0            # The player's maximum fall speed, measured in px/sec
 var CEILING_BUMP_SPEED := 45.0         # The speed at which the player falls after hitting a ceiling, measured in px/sec
 
 var WALK_SPEED := 96.0                 # The player's speed while walking, measured in px/sec
@@ -31,9 +31,9 @@ var SWIM_SPEED := 95.0                 # The player's horizontal speed while swi
 var SWIM_GROUND_SPEED := 45.0          # The player's horizontal speed while grounded underwater, measured in px/sec
 var SWIM_HEIGHT := 100.0               # The strength of the player's swim, measured in px/sec
 var SWIM_GRAVITY := 2.5                # The player's gravity while swimming, measured in px/frame
-var MAX_SWIM_FALL_SPEED := 200         # The player's maximum fall speed while swimming, measured in px/sec
+var MAX_SWIM_FALL_SPEED := 200.0       # The player's maximum fall speed while swimming, measured in px/sec
 
-var DEATH_JUMP_HEIGHT := 300           # The strength of the player's "jump" during the death animation, measured in px/sec
+var DEATH_JUMP_HEIGHT := 300.0         # The strength of the player's "jump" during the death animation, measured in px/sec
 #endregion
 
 @onready var camera_center_joint: Node2D = $CameraCenterJoint
