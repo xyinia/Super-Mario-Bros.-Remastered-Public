@@ -520,6 +520,7 @@ func die(pit := false) -> void:
 	Global.p_switch_active = false
 	Global.p_switch_timer = 0
 	stop_all_timers()
+	sprite.process_mode = Node.PROCESS_MODE_ALWAYS
 	state_machine.transition_to("Dead", {"Pit": pit})
 	process_mode = Node.PROCESS_MODE_ALWAYS
 	get_tree().paused = true
@@ -645,7 +646,7 @@ func power_up_animation(new_power_state := "") -> void:
 			await get_tree().create_timer(0.6).timeout
 			transforming = false
 	get_tree().paused = false
-	sprite.process_mode = Node.PROCESS_MODE_PAUSABLE
+	sprite.process_mode = Node.PROCESS_MODE_INHERIT
 	if Global.player_action_just_pressed("jump", player_id):
 		jump()
 	return
