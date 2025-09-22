@@ -1,24 +1,41 @@
 class_name Player
 extends CharacterBody2D
 
-var AIR_ACCEL := 3.0
-var AIR_SKID := 1.5
-var DECEL := 3.0
-var FALL_GRAVITY := 25.0
-var GROUND_RUN_ACCEL := 1.25
-var GROUND_WALK_ACCEL := 4.0
-var JUMP_GRAVITY := 11.0
-var JUMP_HEIGHT := 300.0
-var JUMP_INCR := 8.0
-var SWIM_GRAVITY := 2.5
-var SWIM_SPEED := 95.0
-var MAX_FALL_SPEED := 280
-var MAX_SWIM_FALL_SPEED := 200
-var RUN_SKID := 8.0
-var RUN_SPEED := 160
-var WALK_SKID := 8.0
-var WALK_SPEED := 96.0
-var CEILING_BUMP_SPEED := 45.0
+#region Physics properies, these can be changed within a custom character's CharacterInfo.json
+var JUMP_GRAVITY := 11.0               # The player's gravity while jumping, measured in px/frame
+var JUMP_HEIGHT := 300.0               # The strength of the player's jump, measured in px/sec
+var JUMP_INCR := 8.0                   # How much the player's X velocity affects their jump speed
+var JUMP_CANCEL_DIVIDE := 1.5          # When the player cancels their jump, their Y velocity gets divided by this value
+var JUMP_HOLD_SPEED_THRESHOLD := 0.0   # When the player's Y velocity goes past this value while jumping, their gravity switches to FALL_GRAVITY
+
+var BOUNCE_HEIGHT := 200.0             # The strength at which the player bounces off enemies, measured in px/sec 
+var BOUNCE_JUMP_HEIGHT := 300.0        # The strength at which the player bounces off enemies while holding jump, measured in px/sec 
+
+var FALL_GRAVITY := 25.0               # The player's gravity while falling, measured in px/frame
+var MAX_FALL_SPEED := 280              # The player's maximum fall speed, measured in px/sec
+var CEILING_BUMP_SPEED := 45.0         # The speed at which the player falls after hitting a ceiling, measured in px/sec
+
+var WALK_SPEED := 96.0                 # The player's speed while walking, measured in px/sec
+var GROUND_WALK_ACCEL := 4.0           # The player's acceleration while walking, measured in px/frame
+var WALK_SKID := 8.0                   # The player's turning deceleration while running, measured in px/frame
+
+var RUN_SPEED := 160.0                 # The player's speed while running, measured in px/sec
+var GROUND_RUN_ACCEL := 1.25           # The player's acceleration while running, measured in px/frame
+var RUN_SKID := 8.0                    # The player's turning deceleration while running, measured in px/frame
+
+var DECEL := 3.0                       # The player's deceleration while no buttons are pressed, measured in px/frame
+var AIR_ACCEL := 3.0                   # The player's acceleration while in midair, measured in px/frame
+var AIR_SKID := 1.5                    # The player's turning deceleration while in midair, measured in px/frame
+
+var SWIM_SPEED := 95.0                 # The player's horizontal speed while swimming, measured in px/sec
+var SWIM_GROUND_SPEED := 45.0          # The player's horizontal speed while grounded underwater, measured in px/sec
+var SWIM_HEIGHT := 100.0               # The strength of the player's swim, measured in px/sec
+var SWIM_GRAVITY := 2.5                # The player's gravity while swimming, measured in px/frame
+var MAX_SWIM_FALL_SPEED := 200         # The player's maximum fall speed while swimming, measured in px/sec
+
+var DEATH_JUMP_HEIGHT := 300           # The strength of the player's "jump" during the death animation, measured in px/sec
+#endregion
+
 @onready var camera_center_joint: Node2D = $CameraCenterJoint
 
 @onready var sprite: AnimatedSprite2D = %Sprite
@@ -125,7 +142,7 @@ const ANIMATION_FALLBACKS := {
 	"WaterIdle": "Idle",
 	"DieFreeze": "Die",
 	"StarJump": "Jump",
-	"StarFall": "JumpFall"
+	"StarFall": "StarJump"
 }
 
 var palette_transform := true
@@ -272,12 +289,8 @@ func apply_gravity(delta: float) -> void:
 	if in_water or flight_meter > 0:
 		gravity = SWIM_GRAVITY
 	else:
-		if gravity_vector.y > 0:
-			if velocity.y > 0:
-				gravity = FALL_GRAVITY
-		elif gravity_vector.y < 0:
-			if velocity.y < 0:
-				gravity = FALL_GRAVITY
+		if sign(gravity_vector.y) * velocity.y + JUMP_HOLD_SPEED_THRESHOLD > 0.0:
+			gravity = FALL_GRAVITY
 	velocity += (gravity_vector * ((gravity / (1.5 if low_gravity else 1.0)) / delta)) * delta
 	var target_fall: float = MAX_FALL_SPEED
 	if in_water:
@@ -369,11 +382,11 @@ func enemy_bounce_off(add_combo := true) -> void:
 	jump_cancelled = not Global.player_action_pressed("jump", player_id)
 	await get_tree().physics_frame
 	if Global.player_action_pressed("jump", player_id):
-		velocity.y = -300
+		velocity.y = sign(gravity_vector.y) * -BOUNCE_JUMP_HEIGHT
 		gravity = JUMP_GRAVITY
 		has_jumped = true
 	else:
-		velocity.y = -200
+		velocity.y = sign(gravity_vector.y) * -BOUNCE_HEIGHT
 
 func add_stomp_combo() -> void:
 	if stomp_combo >= 10:
