@@ -131,6 +131,8 @@ func _ready() -> void:
 			$Info.hide()
 			%Grid.hide()
 			play_level()
+			_physics_process(0)
+			set_physics_process(false)
 			for i in [$TileMenu]:
 				i.queue_free()
 		else:
