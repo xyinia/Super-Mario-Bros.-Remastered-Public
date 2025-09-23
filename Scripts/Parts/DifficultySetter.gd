@@ -15,9 +15,6 @@ func flag_lives_changed(new_value := 0) -> void:
 func time_limit_changed(new_value := 0) -> void:
 	Settings.file.difficulty.time_limit = new_value
 
-func timer_style_changed(new_value := 0) -> void:
-	Settings.file.difficulty.timer_style = new_value
-
 func game_over_changed(new_value := 0) -> void:
 	Settings.file.difficulty.game_over_behaviour = new_value
 

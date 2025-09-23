@@ -27,7 +27,7 @@ func handle_main_hud() -> void:
 	$Main/RedCoins.hide()
 	$Main/CoinCount.show()
 	%Combo.hide()
-	$Timer.paused = Settings.file.difficulty.timer_style == 1
+	$Timer.paused = Settings.file.difficulty.time_limit == 2
 	$%Time.show()
 	%Stopwatch.hide()
 	%PB.hide()
@@ -180,7 +180,7 @@ func activate_pause_menu() -> void:
 const HURRY_UP = preload("res://Assets/Audio/BGM/HurryUp.mp3")
 
 func on_timeout() -> void:
-	if Global.can_time_tick and is_instance_valid(Global.current_level) and Settings.file.difficulty.time_limit == 1:
+	if Global.can_time_tick and is_instance_valid(Global.current_level) and Settings.file.difficulty.time_limit > 0:
 		if Global.level_editor != null:
 			if Global.level_editor.current_state != LevelEditor.EditorState.PLAYTESTING:
 				return
