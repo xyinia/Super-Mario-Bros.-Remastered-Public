@@ -612,8 +612,8 @@ settings_category = "difficulty"
 layout_mode = 2
 option_key = "time_limit"
 title = "DIFFI_TIME"
-value_descs = Array[String](["DESC_TIME_0", "DESC_TIME_1"])
-values = ["SETTING_OFF", "SETTING_ON"]
+value_descs = Array[String](["DESC_TIME_0", "DESC_TIME_1", "DESC_TIME_2"])
+values = ["SETTING_OFF", "SETTINGS_CLASSIC", "SETTINGS_MODERN"]
 settings_category = "difficulty"
 
 [node name="LakituStyle" parent="PanelContainer/MarginContainer/VBoxContainer/Difficulty" groups=["Options"] instance=ExtResource("3_dl6kk")]
