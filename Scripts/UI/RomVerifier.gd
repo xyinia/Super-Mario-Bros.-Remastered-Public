@@ -16,8 +16,7 @@ func _ready() -> void:
 	await get_tree().physics_frame
 	DisplayServer.window_set_mode(DisplayServer.WINDOW_MODE_WINDOWED)
 	DisplayServer.window_set_flag(DisplayServer.WINDOW_FLAG_BORDERLESS, false)	
-	on_file_dropped(args) 
-
+  
 func on_file_dropped(files: PackedStringArray) -> void:
 	for i in files:
 		if i.contains(".zip"):
