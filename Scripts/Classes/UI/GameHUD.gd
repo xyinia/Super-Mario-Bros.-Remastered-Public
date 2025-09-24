@@ -93,6 +93,8 @@ func handle_challenge_mode_hud() -> void:
 	$Main/CoinCount.hide()
 	var red_coins_collected = ChallengeModeHandler.current_run_red_coins_collected
 	var idx := 0
+	if Global.world_num > 8:
+		return
 	if Global.in_title_screen:
 		red_coins_collected = int(ChallengeModeHandler.red_coins_collected[Global.world_num - 1][Global.level_num - 1])
 	for i in [$Main/RedCoins/Coin1, $Main/RedCoins/Coin2, $Main/RedCoins/Coin3, $Main/RedCoins/Coin4, $Main/RedCoins/Coin5]:
