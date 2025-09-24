@@ -376,9 +376,9 @@ func is_actually_on_ceiling() -> bool:
 				return true
 	return false
 
-func enemy_bounce_off(add_combo := true) -> void:
+func enemy_bounce_off(add_combo := true, award_score := true) -> void:
 	if add_combo:
-		add_stomp_combo()
+		add_stomp_combo(award_score)
 	jump_cancelled = not Global.player_action_pressed("jump", player_id)
 	await get_tree().physics_frame
 	if Global.player_action_pressed("jump", player_id):
@@ -388,18 +388,20 @@ func enemy_bounce_off(add_combo := true) -> void:
 	else:
 		velocity.y = sign(gravity_vector.y) * -BOUNCE_HEIGHT
 
-func add_stomp_combo() -> void:
+func add_stomp_combo(award_score := true) -> void:
 	if stomp_combo >= 10:
-		if Global.current_game_mode == Global.GameMode.CHALLENGE or Settings.file.difficulty.inf_lives:
-			Global.score += 10000
-			score_note_spawner.spawn_note(10000)
-		else:
-			Global.lives += 1
-			AudioManager.play_global_sfx("1_up")
-			score_note_spawner.spawn_one_up_note()
+		if award_score:
+			if Global.current_game_mode == Global.GameMode.CHALLENGE or Settings.file.difficulty.inf_lives:
+				Global.score += 10000
+				score_note_spawner.spawn_note(10000)
+			else:
+				Global.lives += 1
+				AudioManager.play_global_sfx("1_up")
+				score_note_spawner.spawn_one_up_note()
 	else:
-		Global.score += COMBO_VALS[stomp_combo]
-		score_note_spawner.spawn_note(COMBO_VALS[stomp_combo])
+		if award_score:
+			Global.score += COMBO_VALS[stomp_combo]
+			score_note_spawner.spawn_note(COMBO_VALS[stomp_combo])
 		stomp_combo += 1
 
 func bump_ceiling() -> void:
