@@ -25,6 +25,8 @@ var can_update := true
 
 var can_air_kick := false
 
+var time_since_kicked := 0.0 ## For disabling stomp score if too close to a kick
+
 func _ready() -> void:
 	$Sprite.flip_v = flipped
 	if flipped:
@@ -45,8 +47,14 @@ func on_player_stomped_on(stomped_player: Player) -> void:
 		DiscoLevel.combo_meter += 10
 		moving = false
 		AudioManager.play_sfx("enemy_stomp", global_position)
-		stomped_player.enemy_bounce_off()
-		if Global.current_game_mode == Global.GameMode.CHALLENGE and stomped_player.stomp_combo >= 10:
+		
+		stomped_player.enemy_bounce_off(true, time_since_kicked > 0.1)
+		
+		## TODO(jdaster64): Try to figure out a way to recreate the exact
+		## anti-farm method used in Deluxe (permanently increasing the points)
+		## without affecting normal scoring, and killing the Koopa only when
+		## an increased kick results in 8000 points.
+		if Global.current_game_mode == Global.GameMode.CHALLENGE and stomped_player.stomp_combo >= 8:
 			die_from_object(stomped_player)
 
 func block_bounced(_block: Block) -> void:
@@ -76,20 +84,22 @@ func award_score(award_level: int) -> void:
 		
 func get_kick_award(hit_player: Player) -> int:
 	var award_level = hit_player.stomp_combo + 2
-	if wake_meter > 6.96:
-		award_level = 9
-	elif wake_meter > 6.75:
-		award_level = 5
-	elif wake_meter > 6.25:
-		award_level = 3
 	if award_level > 10:
 		award_level = 10
+	# Award special amounts of points if close to waking up.
+	if wake_meter > 7 - 0.04:
+		award_level = 9
+	elif wake_meter > 7 - 0.25:
+		award_level = 5
+	elif wake_meter > 7 - 0.75:
+		award_level = 3
 	return award_level
 
 func kick(hit_player: Player) -> void:
 	update_hitbox()
 	DiscoLevel.combo_meter += 25
 	moving = true
+	time_since_kicked = 0.0
 	if can_air_kick:
 		$ScoreNoteSpawner.spawn_note(8000)
 	else:
@@ -102,6 +112,7 @@ func _physics_process(delta: float) -> void:
 	handle_block_collision()
 	if moving:
 		wake_meter = 0
+		time_since_kicked += delta
 		$Sprite.play("Spin")
 	else:
 		combo = 0
