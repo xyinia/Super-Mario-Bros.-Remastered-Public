@@ -143,9 +143,8 @@ func add_combo() -> void:
 	award_score(combo + 3)
 	if combo < 7:
 		combo += 1
-	
-	# Force limit on how long you can let a shell hit respawning enemies.
-	if Global.current_game_mode == Global.GameMode.CHALLENGE and moving_time > 12.0:
+	elif Global.current_game_mode == Global.GameMode.CHALLENGE and moving_time > 12.0:
+		# Force limit on how long you can let a shell hit respawning enemies.
 		die()
 
 func update_hitbox() -> void:
