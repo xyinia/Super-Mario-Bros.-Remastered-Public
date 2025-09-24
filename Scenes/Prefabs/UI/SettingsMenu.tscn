@@ -846,7 +846,7 @@ layout_mode = 2
 
 [node name="RegenROM" parent="PanelContainer/MarginContainer/VBoxContainer/Data" instance=ExtResource("9_t6b48")]
 layout_mode = 2
-title = "Delete Generated Resource Pack"
+title = "Reverify ROM"
 
 [node name="Control" type="Control" parent="PanelContainer"]
 custom_minimum_size = Vector2(24, 0)

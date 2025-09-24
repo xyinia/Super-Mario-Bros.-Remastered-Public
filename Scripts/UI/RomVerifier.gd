@@ -8,9 +8,10 @@ func _ready() -> void:
 	Global.get_node("GameHUD").hide()
 	var validRomFound = false
 	for i in args:
-		if(is_valid_rom((i))):
-			on_file_dropped(args)
-			validRomFound = true 
+		if i.is_valid_filename():
+			if(is_valid_rom((i))):
+				on_file_dropped(args)
+				validRomFound = true 
 	if(!validRomFound):
 		get_window().files_dropped.connect(on_file_dropped)
 	await get_tree().physics_frame
