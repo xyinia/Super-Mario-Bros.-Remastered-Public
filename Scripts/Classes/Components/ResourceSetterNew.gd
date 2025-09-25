@@ -85,6 +85,7 @@ func get_resource(json_file: JSON) -> Resource:
 			if json.get("source") is String:
 				source_resource_path = json_file.resource_path.replace(json_file.resource_path.get_file(), json.source)
 		else:
+			print(json)
 			Global.log_error("Error getting variations! " + resource_path)
 			return
 	for i in Settings.file.visuals.resource_packs:
