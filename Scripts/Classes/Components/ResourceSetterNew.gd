@@ -34,7 +34,7 @@ var update_on_spawn := true
 func _init() -> void:
 	set_process_mode(Node.PROCESS_MODE_ALWAYS)
 
-func _ready() -> void:
+func _enter_tree() -> void:
 	safety_check()
 	if update_on_spawn:
 		update_resource()

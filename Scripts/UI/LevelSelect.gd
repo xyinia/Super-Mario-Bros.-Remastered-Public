@@ -196,3 +196,7 @@ func cleanup() -> void:
 func close() -> void:
 	active = false
 	hide()
+
+
+func on_level_selected() -> void:
+	pass # Replace with function body.

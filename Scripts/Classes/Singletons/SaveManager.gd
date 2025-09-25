@@ -43,7 +43,8 @@ const SAVE_TEMPLATE := {
 		-1.0, -1.0, -1.0, -1.0
 	],
 	"HighScore": 0,
-	"ExtraWorldWin": false
+	"ExtraWorldWin": false,
+	"CurrentQuest": 1
 }
 
 
