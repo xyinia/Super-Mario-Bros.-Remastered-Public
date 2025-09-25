@@ -27,7 +27,7 @@ func _enter_tree() -> void:
 		LevelPersistance.active_nodes = old_state.duplicate(true)
 
 func _ready() -> void:
-	if [Global.GameMode.CHALLENGE, Global.GameMode.MARATHON_PRACTICE].has(Global.current_game_mode):
+	if [Global.GameMode.CHALLENGE, Global.GameMode.MARATHON_PRACTICE].has(Global.current_game_mode) or Global.current_campaign == "SMBANN":
 		queue_free()
 		return
 	if has_meta("is_flag") == false:
