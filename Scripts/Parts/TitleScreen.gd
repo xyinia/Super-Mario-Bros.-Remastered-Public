@@ -93,6 +93,7 @@ func open_story_options() -> void:
 func continue_story() -> void:
 	Global.current_game_mode = Global.GameMode.CAMPAIGN
 	if Global.game_beaten or Global.debug_mode:
+		go_back_to_first_level()
 		$CanvasLayer/StoryMode/QuestSelect.open()
 	else:
 		$CanvasLayer/StoryMode/NoBeatenCharSelect.open()
@@ -124,6 +125,10 @@ func get_highscore() -> void:
 
 func clear_stats() -> void:
 	Global.clear_saved_values()
+
+func go_back_to_first_level() -> void:
+	Global.world_num = 1
+	Global.level_num = 1
 	LevelTransition.level_to_transition_to = Level.get_scene_string(Global.world_num, Global.level_num)
 
 func start_game() -> void:
@@ -225,8 +230,6 @@ func quit_game() -> void:
 	get_tree().quit()
 
 func new_game_selected() -> void:
-	Global.world_num = 1
-	Global.level_num = 1
 	Global.second_quest = false
 	Global.current_game_mode = Global.GameMode.CAMPAIGN
 	if Global.game_beaten:
