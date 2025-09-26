@@ -81,6 +81,8 @@ func write_save(campaign: String = Global.current_campaign, force := false) -> v
 		save_json = SAVE_TEMPLATE.duplicate(true)
 	match Global.current_game_mode:
 		Global.GameMode.CAMPAIGN:
+			if Global.world_num < 0:
+				Global.world_num = 1
 			if Global.high_score < Global.score:
 				Global.high_score = Global.score
 			save_json["World"] = Global.world_num
