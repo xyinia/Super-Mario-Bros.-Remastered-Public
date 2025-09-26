@@ -175,6 +175,10 @@ collision_mask = 0
 position = Vector2(21, -9)
 shape = SubResource("RectangleShape2D_6fi1c")
 
+[node name="PosePoint" type="Node2D" parent="Overlay/PlayerDetection"]
+unique_name_in_owner = true
+position = Vector2(-16, 0)
+
 [node name="Overlay2" type="TileMapLayer" parent="Overlay"]
 show_behind_parent = true
 tile_map_data = PackedByteArray("AAAEAAAAAAAHABQAAAAEAAEAAAAHABQAAAAEAAIAAAAHABQAAAAEAAMAAAAHABQAAAAFAAAAAAAHABQAAAAFAAEAAAAHABQAAAAFAAIAAAAHABQAAAAFAAMAAAAHABQAAAAIAAAAAAAHABQAAAAIAAEAAAAHABQAAAAIAAIAAAAHABQAAAAIAAMAAAAHABQAAAAJAAAAAAAHABQAAAAJAAEAAAAHABQAAAAJAAIAAAAHABQAAAAJAAMAAAAHABQAAAA=")

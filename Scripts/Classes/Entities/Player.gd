@@ -74,6 +74,7 @@ var pipe_move_direction := 1
 var stomp_combo := 0
 
 var is_invincible := false
+var is_posing := false
 
 const COMBO_VALS := [100, 200, 400, 500, 800, 1000, 2000, 4000, 5000, 8000, null]
 
@@ -81,6 +82,8 @@ const COMBO_VALS := [100, 200, 400, 500, 800, 1000, 2000, 4000, 5000, 8000, null
 @onready var state_machine: StateMachine = $States
 @onready var normal_state: Node = $States/Normal
 @export var auto_death_pit := true
+
+var can_pose := true
 
 var can_hurt := true
 
