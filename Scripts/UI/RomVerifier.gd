@@ -1,8 +1,8 @@
 class_name ROMVerifier
 extends Node
 
-# Array of valid ROM hashes
-const VALID_HASH := [
+const VALID_HASHES := [
+	"6a54024d5abe423b53338c9b418e0c2ffd86fed529556348e52ffca6f9b53b1a",
 	"c9b34443c0414f3b91ef496d8cfee9fdd72405d673985afa11fb56732c96152b"
 ]
 
@@ -40,7 +40,7 @@ func find_local_rom() -> String:
 		if file_name.to_lower().ends_with(".nes"):
 			return exe_dir.path_join(file_name)
 	return ""
-
+  
 func on_file_dropped(files: PackedStringArray) -> void:
 	for file in files:
 		if file.ends_with(".zip"):
@@ -69,9 +69,9 @@ static func get_hash(file_path: String) -> String:
 	var data := file_bytes.slice(16)
 	return Marshalls.raw_to_base64(data).sha256_text()
 
-static func is_valid_rom(rom_path: String) -> bool:
-	var hash := get_hash(rom_path)
-	return hash in VALID_HASH
+static func is_valid_rom(rom_path := "") -> bool:
+	return get_hash(rom_path) in VALID_HASHES
+
 
 func error() -> void:
 	%Error.show()
