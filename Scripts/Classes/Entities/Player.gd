@@ -74,6 +74,7 @@ var pipe_move_direction := 1
 var stomp_combo := 0
 
 var is_invincible := false
+var can_pose := false
 var is_posing := false
 
 const COMBO_VALS := [100, 200, 400, 500, 800, 1000, 2000, 4000, 5000, 8000, null]
@@ -82,8 +83,6 @@ const COMBO_VALS := [100, 200, 400, 500, 800, 1000, 2000, 4000, 5000, 8000, null
 @onready var state_machine: StateMachine = $States
 @onready var normal_state: Node = $States/Normal
 @export var auto_death_pit := true
-
-var can_pose := true
 
 var can_hurt := true
 
@@ -616,6 +615,8 @@ func set_power_state_frame() -> void:
 	if power_state != null:
 		$ResourceSetterNew.resource_json = load(get_character_sprite_path())
 		$ResourceSetterNew.update_resource()
+	if %Sprite.sprite_frames != null:
+		can_pose = %Sprite.sprite_frames.has_animation("PoseDoor")
 
 func get_power_up(power_name := "") -> void:
 	if is_dead:

@@ -41,7 +41,6 @@ func _process(_delta: float) -> void:
 
 func _physics_process(_delta: float) -> void:
 	for i: Player in get_tree().get_nodes_in_group("Players"):
-		if not i.sprite.sprite_frames.has_animation("PoseDoor"): i.can_pose = false; continue
 		if i.can_pose and i.global_position >= global_position and i.sprite.sprite_frames.has_animation("PoseDoor"):
 			i.is_posing = true; i.can_pose = false
 			i.global_position = global_position
@@ -51,6 +50,7 @@ func _physics_process(_delta: float) -> void:
 
 func on_pose_finished(player: Player) -> void:
 	player.is_posing = false
+	player.z_index = -2
 
 func on_music_finished() -> void:
 	do_sequence()
