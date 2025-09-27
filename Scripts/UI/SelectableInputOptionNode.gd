@@ -75,10 +75,10 @@ func _input(event: InputEvent) -> void:
 	if event.is_pressed() == false:
 		return
 	
-	if event is InputEventKey:
-		if event.as_text_physical_keycode() == "Escape":
-			cancel_remap()
-			return
+	#if event is InputEventKey:
+		#if event.as_text_physical_keycode() == "Escape":
+			#cancel_remap()
+			#return
 	
 	if type == 0 and event is InputEventKey:
 		map_event_to_action(event)
@@ -90,7 +90,7 @@ func _input(event: InputEvent) -> void:
 func map_event_to_action(event) -> void:
 	for action_name in action_names:
 		var action = action_name
-		if action.contains("ui_") == false:
+		if action.contains("ui_") == false and action != "pause":
 			action = action_name + "_" + str(player_idx)
 		var events = InputMap.action_get_events(action).duplicate()
 		events[type] = event

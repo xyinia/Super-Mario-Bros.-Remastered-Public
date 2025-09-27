@@ -39,7 +39,7 @@ script/source = "extends Node
 
 var input_nodes := []
 
-var actions := [\"jump\", \"run\", \"action\", \"move_left\", \"move_right\", \"move_up\", \"move_down\", \"ui_accept\", \"ui_back\"]
+var actions := [\"jump\", \"run\", \"action\", \"move_left\", \"move_right\", \"move_up\", \"move_down\", \"ui_accept\", \"ui_back\", \"pause\"]
 
 @export_enum(\"Keyboard\", \"Controller\") var type := 0
 
@@ -88,7 +88,7 @@ func update_starting_values() -> void:
 func save_inputs() -> void:
 	for i in actions:
 		var event = null
-		if i.contains(\"ui\"):
+		if i.contains(\"ui\") or i == \"pause\":
 			event = InputMap.action_get_events(i)[type]
 		else:
 			event = InputMap.action_get_events(i + \"_0\")[type]
@@ -687,7 +687,7 @@ size_flags_vertical = 3
 theme_override_constants/separation = -4
 script = ExtResource("4_avtty")
 category_name = "SETTINGS_KEYBOARD"
-options = [NodePath("Jump"), NodePath("Run"), NodePath("Action"), NodePath("Left"), NodePath("Right"), NodePath("Up"), NodePath("Down"), NodePath("Accept"), NodePath("Back")]
+options = [NodePath("Jump"), NodePath("Run"), NodePath("Action"), NodePath("Left"), NodePath("Right"), NodePath("Up"), NodePath("Down"), NodePath("Accept"), NodePath("Back"), NodePath("Pause")]
 
 [node name="Control" type="Control" parent="PanelContainer/MarginContainer/VBoxContainer/KeyboardControls"]
 custom_minimum_size = Vector2(0, 4)
@@ -738,6 +738,11 @@ layout_mode = 2
 action_names = ["ui_back"]
 title = "BACK"
 
+[node name="Pause" parent="PanelContainer/MarginContainer/VBoxContainer/KeyboardControls" groups=["Options"] instance=ExtResource("9_ksnto")]
+layout_mode = 2
+action_names = ["pause"]
+title = "PAUSE"
+
 [node name="InputMapSaving" type="Node" parent="PanelContainer/MarginContainer/VBoxContainer/KeyboardControls" groups=["Options"]]
 process_mode = 3
 script = SubResource("GDScript_ksnto")
@@ -755,7 +760,7 @@ size_flags_vertical = 3
 theme_override_constants/separation = -4
 script = ExtResource("4_avtty")
 category_name = "SETTINGS_CONTROLLER"
-options = [NodePath("Jump"), NodePath("Run"), NodePath("Action"), NodePath("Left"), NodePath("Right"), NodePath("Up"), NodePath("Down"), NodePath("Accept"), NodePath("Back")]
+options = [NodePath("Jump"), NodePath("Run"), NodePath("Action"), NodePath("Left"), NodePath("Right"), NodePath("Up"), NodePath("Down"), NodePath("Accept"), NodePath("Back"), NodePath("Pause")]
 
 [node name="Control" type="Control" parent="PanelContainer/MarginContainer/VBoxContainer/Controller"]
 custom_minimum_size = Vector2(0, 4)
@@ -822,6 +827,13 @@ layout_mode = 2
 settings_category = "controller"
 action_names = ["ui_back"]
 title = "BACK"
+type = 1
+
+[node name="Pause" parent="PanelContainer/MarginContainer/VBoxContainer/Controller" groups=["Options"] instance=ExtResource("9_ksnto")]
+layout_mode = 2
+settings_category = "controller"
+action_names = ["pause"]
+title = "PAUSE"
 type = 1
 
 [node name="InputMapSaving" type="Node" parent="PanelContainer/MarginContainer/VBoxContainer/Controller" groups=["Options"]]
