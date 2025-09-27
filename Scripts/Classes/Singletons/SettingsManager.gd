@@ -34,7 +34,9 @@ var file := {
 		"move_left": "Left",
 		"move_right": "Right",
 		"move_up": "Up",
-		"move_down": "Down"
+		"move_down": "Down",
+		"ui_accept": "Z",
+		"ui_back": "X"
 	},
 	"controller":
 	{
@@ -44,7 +46,9 @@ var file := {
 		"move_left": "0,-1",
 		"move_right": "0,1",
 		"move_up": "1,-1",
-		"move_down": "1,1"
+		"move_down": "1,1",
+		"ui_accept": 0,
+		"ui_back": 1
 	},
 	"visuals":
 	{
