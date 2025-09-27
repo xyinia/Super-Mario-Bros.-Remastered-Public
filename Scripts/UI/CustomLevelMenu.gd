@@ -46,6 +46,7 @@ func _ready() -> void:
 		%LevelList.close()
 
 func clear_saved_stuff() -> void:
+	last_played_container = null
 	%LSSLevelInfo.saved_stuff.clear()
 	saved_search_values = [-1, -1, -1]
 	%LSSBrowser.number_of_pages = -1
