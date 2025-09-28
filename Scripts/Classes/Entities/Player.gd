@@ -62,7 +62,12 @@ var character := "Mario"
 var crouching := false
 var skidding := false
 
+var bumping := false
 var can_bump_sfx := true
+var can_bump_jump = false
+var can_bump_crouch = false
+var can_bump_swim = false
+var can_bump_fly = false
 
 @export var player_id := 0
 const ONE_UP_NOTE = preload("uid://dopxwjj37gu0l")
@@ -131,6 +136,7 @@ static var CHARACTER_PALETTES := [
 
 const ANIMATION_FALLBACKS := {
 	"JumpFall": "Jump", 
+	"JumpBump": "Bump",
 	"Fall": "Move", 
 	"Pipe": "Idle", 
 	"Walk": "Move", 
@@ -138,10 +144,24 @@ const ANIMATION_FALLBACKS := {
 	"PipeWalk": "Move", 
 	"LookUp": "Idle", 
 	"CrouchFall": "Crouch", 
-	"CrouchAttack": "Attack", 
+	"CrouchJump": "Crouch", 
+	"CrouchBump": "Bump",
+	"CrouchMove": "Crouch", 
+	"IdleAttack": "Attack", 
+	"CrouchAttack": "IdleAttack", 
+	"MoveAttack": "IdleAttack", 
+	"WalkAttack": "MoveAttack", 
+	"RunAttack": "MoveAttack", 
+	"SkidAttack": "MoveAttack",
+	"FlyIdle": "SwimIdle",
+	"FlyUp": "SwimUp",
+	"FlyMove": "SwimMove",
+	"FlyAttack": "SwimAttack",
+	"FlyBump": "SwimBump",
 	"FlagSlide": "Climb",
 	"WaterMove": "Move",
 	"WaterIdle": "Idle",
+	"SwimBump": "Bump",
 	"DieFreeze": "Die",
 	"StarJump": "Jump",
 	"StarFall": "StarJump"
@@ -410,9 +430,12 @@ func bump_ceiling() -> void:
 	AudioManager.play_sfx("bump", global_position)
 	velocity.y = CEILING_BUMP_SPEED
 	can_bump_sfx = false
+	bumping = true
 	await get_tree().create_timer(0.1).timeout
 	AudioManager.kill_sfx("small_jump")
 	AudioManager.kill_sfx("big_jump")
+	await get_tree().create_timer(0.1).timeout
+	bumping = false
 
 func super_star() -> void:
 	DiscoLevel.combo_meter += 1
@@ -617,6 +640,10 @@ func set_power_state_frame() -> void:
 		$ResourceSetterNew.update_resource()
 	if %Sprite.sprite_frames != null:
 		can_pose = %Sprite.sprite_frames.has_animation("PoseDoor")
+		can_bump_jump = %Sprite.sprite_frames.has_animation("JumpBump")
+		can_bump_crouch = %Sprite.sprite_frames.has_animation("CrouchBump")
+		can_bump_swim = %Sprite.sprite_frames.has_animation("SwimBump")
+		can_bump_fly = %Sprite.sprite_frames.has_animation("FlyBump")
 
 func get_power_up(power_name := "") -> void:
 	if is_dead:
