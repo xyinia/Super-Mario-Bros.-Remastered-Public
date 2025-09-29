@@ -3,6 +3,7 @@ extends HBoxContainer
 
 @export var settings_category := "video"
 @export var selected := false
+@export var can_bind_escape := false
 
 @export var action_names := [""]
 @export var title := ""
@@ -90,10 +91,10 @@ func _input(event: InputEvent) -> void:
 	if event.is_pressed() == false:
 		return
 	
-	#if event is InputEventKey:
-		#if event.as_text_physical_keycode() == "Escape":
-			#cancel_remap()
-			#return
+	if event is InputEventKey and not can_bind_escape:
+		if event.as_text_physical_keycode() == "Escape":
+			map_event_to_action(null, current_binding_idx)
+			return
 	
 	if type == 0 and event is InputEventKey:
 		map_event_to_action(event, current_binding_idx)

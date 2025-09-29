@@ -74,6 +74,7 @@ func load_inputs() -> void:
 					idx += 1
 			else:
 				bind_value_to_event(i, value, 0)
+		i.update_value()
 
 func bind_value_to_event(input_node, value, idx := 0) -> void:
 	var event: InputEvent = null
@@ -852,6 +853,7 @@ type = 1
 [node name="Pause" parent="PanelContainer/MarginContainer/VBoxContainer/Controller" groups=["Options"] instance=ExtResource("9_ksnto")]
 layout_mode = 2
 settings_category = "controller"
+can_bind_escape = true
 action_names = ["pause"]
 title = "PAUSE"
 type = 1
