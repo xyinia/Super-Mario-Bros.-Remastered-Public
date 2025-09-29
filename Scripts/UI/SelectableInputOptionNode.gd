@@ -107,25 +107,33 @@ func map_event_to_action(event, idx := 0) -> void:
 		var action = action_name
 		if action.contains("ui_") == false and action != "pause":
 			action = action_name + "_" + str(player_idx)
+		var replace_event = null
 		var events = InputMap.action_get_events(action).duplicate()
-		if events.size() < 4:
-			for i in abs(4 - events.size()):
-				var dummy = InputEventKey.new()
-				dummy.keycode = KEY_UNKNOWN
-				events.append(dummy)
-		events[type + (idx * 2)] = event
+		var matching_type_events := []
+		for i in events:
+			if type == 0 and i is InputEventKey:
+				matching_type_events.append(i)
+			elif type == 1 and (i is InputEventJoypadButton or i is InputEventJoypadMotion):
+				matching_type_events.append(i)
+		if matching_type_events.size() - 1 < idx:
+			matching_type_events.append(event)
+		replace_event = matching_type_events[clamp(idx, 0, matching_type_events.size() - 1)]
+		var itr := 0
+		for i in events:
+			if i == replace_event:
+				events[itr] = event
+			itr += 1
 		InputMap.action_erase_events(action)
 		for i in events:
-			print([action, i])
 			InputMap.action_add_event(action, i)
 		input_changed.emit(action, event)
 		input_events[idx] = event
-		awaiting_input = false
-		await get_tree().create_timer(0.1).timeout
-		rebinding_input = false
-		get_parent().can_input = true
-		can_remap = true
-		update_value()
+	awaiting_input = false
+	await get_tree().create_timer(0.1).timeout
+	rebinding_input = false
+	get_parent().can_input = true
+	can_remap = true
+	update_value()
 
 func get_event_string(event: InputEvent) -> String:
 	var event_string := ""

@@ -106,17 +106,11 @@ func save_inputs() -> void:
 			event = InputMap.action_get_events(i)
 		else:
 			event = InputMap.action_get_events(i + \"_0\")
-		var size = event.size()
-		if type == 0:
-			if size > 2:
-				events = [get_str_for_event(event[0]), get_str_for_event(event[2])]
-			else:
-				events = [get_str_for_event(event[0])]
-		elif type == 1:
-			if size > 3:
-				events = [get_str_for_event(event[1]), get_str_for_event(event[3])]
-			else:
-				events = [get_str_for_event(event[1])]
+		for x in event:
+			if type == 0 and x is InputEventKey:
+				events.append(get_str_for_event(x))
+			elif type == 1 and (x is InputEventJoypadButton or x is InputEventJoypadMotion):
+				events.append(get_str_for_event(x))
 		Settings.file[[\"keyboard\", \"controller\"][type]][i] = events
 
 func get_str_for_event(event: InputEvent):
