@@ -68,6 +68,8 @@ func load_inputs() -> void:
 			if value == null:
 				continue
 			if value is Array:
+				if value.size() < 2:
+					value.append(null)
 				var idx := 0
 				for x in value:
 					bind_value_to_event(i, x, idx)
@@ -78,6 +80,8 @@ func load_inputs() -> void:
 
 func bind_value_to_event(input_node, value, idx := 0) -> void:
 	var event: InputEvent = null
+	if value == null:
+		return
 	if value is String:
 		if value == \"\":
 			input_node.map_event_to_action(null, idx)
@@ -853,7 +857,6 @@ type = 1
 [node name="Pause" parent="PanelContainer/MarginContainer/VBoxContainer/Controller" groups=["Options"] instance=ExtResource("9_ksnto")]
 layout_mode = 2
 settings_category = "controller"
-can_bind_escape = true
 action_names = ["pause"]
 title = "PAUSE"
 type = 1
