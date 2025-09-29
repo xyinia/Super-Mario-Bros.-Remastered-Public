@@ -22,7 +22,9 @@ var can_remap := true
 
 var current_device_brand := 0
 
-var input_event: InputEvent = null
+var current_binding_idx := 0
+
+var input_events: Array[InputEvent] = [null, null]
 
 const button_id_translation := [
 	["A", "B", "✕"],
@@ -52,12 +54,25 @@ func _process(_delta: float) -> void:
 
 func update_value() -> void:
 	$Title.text = tr(title) + ":"
-	$Value.text = get_event_string(input_event) if not awaiting_input else "Press Any..."
+	if awaiting_input:
+		$Value.text = "Press Any..."
+	else:
+		if current_binding_idx == 0:
+			$Value.text = "(" + get_event_string(input_events[0]) + "), " + get_event_string(input_events[1]) + " "
+		else:
+			$Value.text = " " + get_event_string(input_events[0]) + " ,(" + get_event_string(input_events[1]) + ")"
 
 func handle_inputs() -> void:
-	if selected and can_remap:
-		if Input.is_action_just_pressed("ui_accept"):
-			begin_remap()
+	if can_remap:
+		if selected:
+			if Input.is_action_just_pressed("ui_accept"):
+				begin_remap()
+		if Input.is_action_just_pressed("ui_right"):
+			current_binding_idx = 1
+			update_value()
+		elif Input.is_action_just_pressed("ui_left"):
+			current_binding_idx = 0
+			update_value()
 
 func begin_remap() -> void:
 	$Timer.stop()
@@ -81,24 +96,30 @@ func _input(event: InputEvent) -> void:
 			#return
 	
 	if type == 0 and event is InputEventKey:
-		map_event_to_action(event)
+		map_event_to_action(event, current_binding_idx)
 	elif type == 1 and (event is InputEventJoypadButton or event is InputEventJoypadMotion):
 		if event is InputEventJoypadMotion:
 			event.axis_value = sign(event.axis_value)
-		map_event_to_action(event)
+		map_event_to_action(event, current_binding_idx)
 
-func map_event_to_action(event) -> void:
+func map_event_to_action(event, idx := 0) -> void:
 	for action_name in action_names:
 		var action = action_name
 		if action.contains("ui_") == false and action != "pause":
 			action = action_name + "_" + str(player_idx)
 		var events = InputMap.action_get_events(action).duplicate()
-		events[type] = event
+		if events.size() < 4:
+			for i in abs(4 - events.size()):
+				var dummy = InputEventKey.new()
+				dummy.keycode = KEY_UNKNOWN
+				events.append(dummy)
+		events[type + (idx * 2)] = event
 		InputMap.action_erase_events(action)
 		for i in events:
+			print([action, i])
 			InputMap.action_add_event(action, i)
 		input_changed.emit(action, event)
-		input_event = event
+		input_events[idx] = event
 		awaiting_input = false
 		await get_tree().create_timer(0.1).timeout
 		rebinding_input = false
@@ -108,8 +129,9 @@ func map_event_to_action(event) -> void:
 
 func get_event_string(event: InputEvent) -> String:
 	var event_string := ""
+	if event == null:
+		return "---"
 	if event is InputEventKey:
-		print(event.keycode)
 		event_string = OS.get_keycode_string(event.keycode)
 	elif event is InputEventJoypadButton:
 		var translation = button_id_translation[event.button_index]
@@ -158,3 +180,4 @@ func cancel_remap() -> void:
 	rebinding_input = false
 	get_parent().can_input = true
 	can_remap = true
+	update_value()
