@@ -117,13 +117,14 @@ func map_event_to_action(event, idx := 0) -> void:
 			elif type == 1 and (i is InputEventJoypadButton or i is InputEventJoypadMotion):
 				matching_type_events.append(i)
 		if matching_type_events.size() - 1 < idx or matching_type_events.is_empty():
-			matching_type_events.append(event)
-		replace_event = matching_type_events[clamp(idx, 0, matching_type_events.size() - 1)]
-		var itr := 0
-		for i in events:
-			if i == replace_event:
-				events[itr] = event
-			itr += 1
+			events.append(event)
+		else:
+			replace_event = matching_type_events[clamp(idx, 0, matching_type_events.size() - 1)]
+			var itr := 0
+			for i in events:
+				if i == replace_event:
+					events[itr] = event
+				itr += 1
 		InputMap.action_erase_events(action)
 		for i in events:
 			InputMap.action_add_event(action, i)
