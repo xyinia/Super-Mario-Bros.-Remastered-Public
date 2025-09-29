@@ -177,12 +177,15 @@ func _unhandled_input(event: InputEvent) -> void:
 	if event is not InputEventJoypadButton and event is not InputEventJoypadMotion:
 		return
 	var device_name = Input.get_joy_name(event.device)
+	var old_brand = current_device_brand
 	if device_name.to_upper().contains("NINTENDO") or device_name.to_upper().contains("SWITCH") or device_name.to_upper().contains("WII"):
 		current_device_brand = 1
 	elif device_name.to_upper().contains("PS") or device_name.to_upper().contains("PLAYSTATION"):
 		current_device_brand = 2
 	else:
 		current_device_brand = 0
+	if old_brand != current_device_brand:
+		update_value()
 
 func cancel_remap() -> void:
 	awaiting_input = false
