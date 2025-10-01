@@ -36,6 +36,6 @@
 		
 		"can_air_turn": false,
 	},
-	"small_hitbox_scale": [1.0, 1.0],
+	"small_hitbox_scale": [0.5, 0.5],
 	"big_hitbox_scale": [1.0, 1.0]
 }

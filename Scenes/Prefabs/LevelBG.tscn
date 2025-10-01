@@ -1,4 +1,4 @@
-[gd_scene load_steps=83 format=4 uid="uid://bksxgpygrdjl7"]
+[gd_scene load_steps=78 format=4 uid="uid://bksxgpygrdjl7"]
 
 [ext_resource type="Script" uid="uid://erdjx03phltn" path="res://Scripts/Classes/LevelBGNew.gd" id="1_pkg8e"]
 [ext_resource type="Script" uid="uid://cq6f682453q6o" path="res://Scripts/Classes/Components/ResourceSetter.gd" id="3_6m0f5"]
@@ -252,40 +252,11 @@ _data = {
 &"Turn": SubResource("Animation_lvidp")
 }
 
-[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_413gx"]
-emission_shape = 3
-emission_box_extents = Vector3(256, 1, 1)
-direction = Vector3(0, 1, 0)
-spread = 15.0
-initial_velocity_min = 20.0
-initial_velocity_max = 50.0
-gravity = Vector3(0, 0, 0)
-
 [sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_7urbp"]
 particles_animation = true
 particles_anim_h_frames = 2
 particles_anim_v_frames = 1
 particles_anim_loop = false
-
-[sub_resource type="Curve" id="Curve_yxjfg"]
-_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(0.738889, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
-point_count = 3
-
-[sub_resource type="CurveTexture" id="CurveTexture_e4hrf"]
-curve = SubResource("Curve_yxjfg")
-
-[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_b8hji"]
-particle_flag_disable_z = true
-emission_shape = 3
-emission_box_extents = Vector3(512, 1, 1)
-direction = Vector3(0, 1, 0)
-initial_velocity_min = 25.0
-initial_velocity_max = 100.0
-angular_velocity_min = -720.0
-angular_velocity_max = 720.0
-gravity = Vector3(0, 0, 0)
-alpha_curve = SubResource("CurveTexture_e4hrf")
-anim_offset_max = 1.0
 
 [sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_dmpyo"]
 particles_animation = true
@@ -303,16 +274,6 @@ metadata/_snap_count = 3
 [sub_resource type="GradientTexture1D" id="GradientTexture1D_78nlv"]
 gradient = SubResource("Gradient_dmpyo")
 width = 3
-
-[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_dmpyo"]
-particle_flag_disable_z = true
-emission_shape = 3
-emission_box_extents = Vector3(256, 1, 1)
-direction = Vector3(0, -1, 0)
-initial_velocity_min = 5.0
-initial_velocity_max = 20.0
-gravity = Vector3(0, -10, 0)
-anim_offset_max = 1.0
 
 [sub_resource type="Gradient" id="Gradient_qkl8a"]
 offsets = PackedFloat32Array(0)
@@ -711,26 +672,34 @@ process_mode = 1
 repeat_size = Vector2(512, 512)
 repeat_times = 4
 
-[node name="Snow" type="GPUParticles2D" parent="OverlayLayer/Particles"]
+[node name="Snow" type="CPUParticles2D" parent="OverlayLayer/Particles"]
 process_mode = 1
 visible = false
 position = Vector2(256, 256)
 amount = 128
 lifetime = 20.0
 preprocess = 20.0
+fixed_fps = 30
 local_coords = true
-process_material = SubResource("ParticleProcessMaterial_413gx")
+draw_order = 1
+emission_shape = 3
+emission_rect_extents = Vector2(256, 1)
+direction = Vector2(0, 1)
+spread = 15.0
+gravity = Vector2(0, 0)
+initial_velocity_min = 20.0
+initial_velocity_max = 50.0
 
 [node name="ResourceSetter" type="Node" parent="OverlayLayer/Particles/Snow" node_paths=PackedStringArray("node_to_affect")]
 process_mode = 1
 script = ExtResource("10_lvidp")
-node_to_affect = NodePath("..")
+node_to_affect = NodePath("")
 property_name = "texture"
 mode = 1
 resource_json = ExtResource("25_aw4cr")
 metadata/_custom_type_script = "uid://cbal8ms2oe1ik"
 
-[node name="Leaves" type="GPUParticles2D" parent="OverlayLayer/Particles"]
+[node name="Leaves" type="CPUParticles2D" parent="OverlayLayer/Particles"]
 process_mode = 1
 visible = false
 material = SubResource("CanvasItemMaterial_7urbp")
@@ -739,18 +708,28 @@ amount = 64
 texture = ExtResource("25_q36g4")
 lifetime = 30.0
 preprocess = 20.0
+fixed_fps = 30
 local_coords = true
-process_material = SubResource("ParticleProcessMaterial_b8hji")
+draw_order = 1
+emission_shape = 3
+emission_rect_extents = Vector2(512, 1)
+direction = Vector2(0, 1)
+gravity = Vector2(0, 0)
+initial_velocity_min = 25.0
+initial_velocity_max = 100.0
+angular_velocity_min = -720.0
+angular_velocity_max = 720.0
+anim_offset_max = 1.0
 
 [node name="ResourceSetterNew" type="Node" parent="OverlayLayer/Particles/Leaves" node_paths=PackedStringArray("node_to_affect")]
 script = ExtResource("10_lvidp")
-node_to_affect = NodePath("..")
+node_to_affect = NodePath("")
 property_name = "texture"
 mode = 1
 resource_json = ExtResource("28_ugdi7")
 metadata/_custom_type_script = "uid://cbal8ms2oe1ik"
 
-[node name="LavaEmber" type="GPUParticles2D" parent="OverlayLayer/Particles"]
+[node name="LavaEmber" type="CPUParticles2D" parent="OverlayLayer/Particles"]
 process_mode = 1
 visibility_layer = 2
 z_index = -50
@@ -761,9 +740,17 @@ amount = 64
 texture = SubResource("GradientTexture1D_78nlv")
 lifetime = 5.0
 preprocess = 10.0
+fixed_fps = 30
 fract_delta = false
 local_coords = true
-process_material = SubResource("ParticleProcessMaterial_dmpyo")
+draw_order = 1
+emission_shape = 3
+emission_rect_extents = Vector2(256, 1)
+direction = Vector2(0, -1)
+gravity = Vector2(0, -10)
+initial_velocity_min = 5.0
+initial_velocity_max = 20.0
+anim_offset_max = 1.0
 
 [node name="FGLayer" type="Parallax2D" parent="."]
 process_mode = 1

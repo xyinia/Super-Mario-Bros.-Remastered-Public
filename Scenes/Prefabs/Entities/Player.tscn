@@ -292,11 +292,11 @@ _data = {
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_nbkfn"]
 resource_local_to_scene = true
-size = Vector2(9, 14)
+size = Vector2(9.2, 14)
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_d20nf"]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_vijl6"]
 resource_local_to_scene = true
-size = Vector2(9, 29.5)
+size = Vector2(9.2, 29.5)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_f6bau"]
 resource_local_to_scene = true
@@ -498,7 +498,6 @@ collision_mask = 3
 collision_priority = 10000000.0
 slide_on_ceiling = false
 floor_constant_speed = true
-floor_max_angle = 0.872665
 floor_snap_length = 4.0
 platform_on_leave = 2
 script = ExtResource("1_f6bau")
@@ -668,7 +667,6 @@ editor_draw_limits = true
 editor_draw_drag_margin = true
 
 [node name="Hitbox" type="Area2D" parent="."]
-visible = false
 position = Vector2(0, -10)
 collision_mask = 5
 
@@ -681,7 +679,7 @@ offset = Vector2(0, -10)
 
 [node name="BigShape" type="CollisionShape2D" parent="Hitbox" groups=["BigCollisions"]]
 position = Vector2(0, -4.75)
-shape = SubResource("RectangleShape2D_d20nf")
+shape = SubResource("RectangleShape2D_vijl6")
 disabled = true
 debug_color = Color(1, 0, 0, 0.419608)
 script = ExtResource("21_jl70t")
