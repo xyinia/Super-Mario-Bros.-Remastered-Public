@@ -194,8 +194,10 @@ func _process(_delta: float) -> void:
 	const OFFSETS = [Vector2.ZERO, Vector2(0, -16), Vector2(-16, 0), Vector2.ZERO]
 	if Global.level_editor != null:
 		owner.global_rotation_degrees = [0, 180, 90, -90][owner.plant_direction]
-		var offset = OFFSETS[owner.plant_direction]
-		owner.global_position = Vector2((owner.get_meta(\"tile_position\") + Vector2i(1, 1)) * 16) + offset
+		# guzlad: only do the offset calculations if the directions actually need them, stops wasting time for other directions
+		if (owner.plant_direction == 1 or owner.plant_direction == 2):	
+			var offset = OFFSETS[owner.plant_direction]
+			owner.global_position = Vector2((owner.get_meta(\"tile_position\") + Vector2i(1, 1)) * 16) + offset
 "
 
 [node name="PirannhaPlant" type="CharacterBody2D" node_paths=PackedStringArray("on_screen_enabler", "score_note_adder") groups=["Enemies"]]
