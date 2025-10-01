@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=3 uid="uid://d1wjw5tobpb3w"]
+[gd_scene load_steps=17 format=3 uid="uid://d1wjw5tobpb3w"]
 
 [ext_resource type="Script" uid="uid://toi3fh8d7cs4" path="res://Scripts/Classes/BooRaceHandler.gd" id="1_1pu8q"]
 [ext_resource type="Texture2D" uid="uid://d0jy2sbxh706d" path="res://Assets/Sprites/UI/RaceCountdown.png" id="2_csmob"]
@@ -6,6 +6,7 @@
 [ext_resource type="Script" uid="uid://cq6f682453q6o" path="res://Scripts/Classes/Components/ResourceSetter.gd" id="4_qeaax"]
 [ext_resource type="Script" uid="uid://cmvlgsjmsk0v5" path="res://Scripts/Classes/Resources/ThemedResource.gd" id="5_reyer"]
 [ext_resource type="AudioStream" uid="uid://bri3u342yy5hk" path="res://Assets/Audio/SFX/RaceCountdown.wav" id="6_qeaax"]
+[ext_resource type="Script" uid="uid://dmtw1jesw1vl7" path="res://Scripts/Classes/Components/PackStreamPlayer.gd" id="7_reyer"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_5ptkl"]
 atlas = ExtResource("2_csmob")
@@ -168,6 +169,8 @@ metadata/_custom_type_script = "uid://cq6f682453q6o"
 stream = ExtResource("6_qeaax")
 autoplay = true
 bus = &"SFX"
+script = ExtResource("7_reyer")
+metadata/_custom_type_script = "uid://dmtw1jesw1vl7"
 
 [node name="Animation" type="AnimationPlayer" parent="."]
 libraries = {

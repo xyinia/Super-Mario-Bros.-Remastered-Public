@@ -1,4 +1,4 @@
-[gd_scene load_steps=82 format=4 uid="uid://bksxgpygrdjl7"]
+[gd_scene load_steps=83 format=4 uid="uid://bksxgpygrdjl7"]
 
 [ext_resource type="Script" uid="uid://erdjx03phltn" path="res://Scripts/Classes/LevelBGNew.gd" id="1_pkg8e"]
 [ext_resource type="Script" uid="uid://cq6f682453q6o" path="res://Scripts/Classes/Components/ResourceSetter.gd" id="3_6m0f5"]
@@ -16,6 +16,7 @@
 [ext_resource type="Texture2D" uid="uid://cx54ubn3schon" path="res://Assets/Sprites/Backgrounds/SecondaryTrees/SnowTrees.png" id="13_kf1vm"]
 [ext_resource type="Script" uid="uid://ca3bew33g45eq" path="res://Scripts/Classes/UI/PackTextureRect.gd" id="13_q0lxs"]
 [ext_resource type="Texture2D" uid="uid://wyrrj7wts6xe" path="res://Assets/Sprites/Backgrounds/SecondaryTrees/SnowTreesLL.png" id="14_ob0l2"]
+[ext_resource type="Script" uid="uid://dmtw1jesw1vl7" path="res://Scripts/Classes/Components/PackStreamPlayer.gd" id="14_ugdi7"]
 [ext_resource type="Texture2D" uid="uid://d4kkcpn1bahcf" path="res://Assets/Sprites/Backgrounds/Hills/JungleLL.png" id="15_413gx"]
 [ext_resource type="AudioStream" uid="uid://mgub7yupxkau" path="res://Assets/Audio/SFX/ANNCheering1.wav" id="15_b1lev"]
 [ext_resource type="Texture2D" uid="uid://hiwsjulaojy1" path="res://Assets/Sprites/Backgrounds/CloudOverlays/CloudOverlay.png" id="15_whv0w"]
@@ -569,16 +570,22 @@ process_mode = 1
 process_mode = 1
 stream = ExtResource("15_b1lev")
 bus = &"SFX"
+script = ExtResource("14_ugdi7")
+metadata/_custom_type_script = "uid://dmtw1jesw1vl7"
 
 [node name="Cheer2" type="AudioStreamPlayer" parent="DiscoBits"]
 process_mode = 1
 stream = ExtResource("16_ugdi7")
 bus = &"SFX"
+script = ExtResource("14_ugdi7")
+metadata/_custom_type_script = "uid://dmtw1jesw1vl7"
 
 [node name="Cheer3" type="AudioStreamPlayer" parent="DiscoBits"]
 process_mode = 1
 stream = ExtResource("17_aw4cr")
 bus = &"SFX"
+script = ExtResource("14_ugdi7")
+metadata/_custom_type_script = "uid://dmtw1jesw1vl7"
 
 [node name="SecondaryLayer" type="Parallax2D" parent="."]
 process_mode = 1
