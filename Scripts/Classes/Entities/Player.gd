@@ -560,6 +560,7 @@ func die(pit := false) -> void:
 	Global.p_switch_active = false
 	Global.p_switch_timer = 0
 	stop_all_timers()
+	Global.total_deaths += 1
 	sprite.process_mode = Node.PROCESS_MODE_ALWAYS
 	state_machine.transition_to("Dead", {"Pit": pit})
 	process_mode = Node.PROCESS_MODE_ALWAYS
@@ -584,7 +585,7 @@ func death_load() -> void:
 	Global.death_load = true
 
 	# Handle lives decrement for CAMPAIGN and MARATHON
-	if [Global.GameMode.CAMPAIGN, Global.GameMode.MARATHON].has(Global.current_game_mode):
+	if [Global.GameMode.CAMPAIGN, Global.GameMode.MARATHON, Global.GameMode.LEVEL_EDITOR, Global.GameMode.CUSTOM_LEVEL].has(Global.current_game_mode):
 		if Settings.file.difficulty.inf_lives == 0:
 			Global.lives -= 1
 

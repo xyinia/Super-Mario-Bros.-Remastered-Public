@@ -62,6 +62,8 @@ var debugged_in := true
 var score_tween = create_tween()
 var time_tween = create_tween()
 
+var total_deaths := 0
+
 var score := 0:
 	set(value):
 		if disco_mode == true:
@@ -304,6 +306,7 @@ func reset_values() -> void:
 	PlayerGhost.idx = 0
 	Checkpoint.passed_checkpoints.clear()
 	Checkpoint.sublevel_id = 0
+	Global.total_deaths = 0
 	Door.unlocked_doors = []
 	Checkpoint.unlocked_doors = []
 	KeyItem.total_collected = 0
