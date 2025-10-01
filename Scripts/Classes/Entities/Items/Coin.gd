@@ -19,7 +19,7 @@ func collect() -> void:
 	DiscoLevel.combo_meter += 10
 	Global.score += 200
 	AudioManager.play_sfx("coin", global_position)
-	if can_spawn_particles:
+	if can_spawn_particles and Settings.file.visuals.extra_particles == 1:
 		summon_particle()
 		$Sprite.queue_free()
 	else:
