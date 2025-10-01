@@ -748,6 +748,7 @@ func get_character_sprite_path(power_stateto_use := power_state.state_name) -> S
 
 func enter_pipe(pipe: PipeArea, warp_to_level := true) -> void:
 	z_index = -10
+	can_bump_sfx = false
 	Global.can_pause = false
 	Global.can_time_tick = false
 	pipe_enter_direction = pipe.get_vector(pipe.enter_direction)
@@ -792,7 +793,7 @@ func exit_pipe(pipe: PipeArea) -> void:
 	pipe_enter_direction = -pipe.get_vector(pipe.enter_direction)
 	AudioManager.play_sfx("pipe", global_position)
 	state_machine.transition_to("Pipe")
-	await get_tree().create_timer(0.6, false).timeout
+	await get_tree().create_timer(0.65, false).timeout
 	Global.can_pause = true
 	state_machine.transition_to("Normal")
 	Global.can_time_tick = true
