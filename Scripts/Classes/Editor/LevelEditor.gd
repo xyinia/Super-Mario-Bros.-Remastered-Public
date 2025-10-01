@@ -282,7 +282,8 @@ func parse_tiles() -> void:
 	for i in entity_layer_nodes:
 		if is_instance_valid(i) == false:
 			continue
-		saved_entity_layers[idx] = i.duplicate(DUPLICATE_USE_INSTANTIATION)
+		if load_play == false:
+			saved_entity_layers[idx] = i.duplicate(DUPLICATE_USE_INSTANTIATION)
 		if i is Player:
 			i.direction = 1
 			i.velocity = Vector2.ZERO
