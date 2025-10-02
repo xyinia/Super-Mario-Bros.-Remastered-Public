@@ -87,6 +87,7 @@ func write_save(campaign: String = Global.current_campaign, force := false) -> v
 				Global.high_score = Global.score
 			save_json["World"] = Global.world_num
 			save_json["Level"] = Global.level_num
+			save_json["Lives"] = Global.lives
 			save_json["Coins"] = Global.coins
 			save_json["Score"] = Global.score
 			save_json["GameWin"] = Global.game_beaten

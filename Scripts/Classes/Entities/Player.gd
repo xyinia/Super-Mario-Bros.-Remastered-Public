@@ -669,8 +669,7 @@ func get_power_up(power_name := "") -> void:
 		await power_up_animation(power_name)
 	else:
 		return
-	if new_power_state.hitbox_size == "Big" and power_state.hitbox_size == "Small":
-		check_for_block()
+	check_for_block()
 	power_state = new_power_state
 	Global.player_power_states[player_id] = str(power_state.get_index())
 	can_hurt = true

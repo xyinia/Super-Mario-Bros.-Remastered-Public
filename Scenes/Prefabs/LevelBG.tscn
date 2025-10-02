@@ -679,7 +679,6 @@ position = Vector2(256, 256)
 amount = 128
 lifetime = 20.0
 preprocess = 20.0
-fixed_fps = 30
 local_coords = true
 draw_order = 1
 emission_shape = 3
@@ -690,10 +689,9 @@ gravity = Vector2(0, 0)
 initial_velocity_min = 20.0
 initial_velocity_max = 50.0
 
-[node name="ResourceSetter" type="Node" parent="OverlayLayer/Particles/Snow" node_paths=PackedStringArray("node_to_affect")]
+[node name="ResourceSetter" type="Node" parent="OverlayLayer/Particles/Snow"]
 process_mode = 1
 script = ExtResource("10_lvidp")
-node_to_affect = NodePath("")
 property_name = "texture"
 mode = 1
 resource_json = ExtResource("25_aw4cr")
@@ -708,7 +706,6 @@ amount = 64
 texture = ExtResource("25_q36g4")
 lifetime = 30.0
 preprocess = 20.0
-fixed_fps = 30
 local_coords = true
 draw_order = 1
 emission_shape = 3
@@ -721,9 +718,8 @@ angular_velocity_min = -720.0
 angular_velocity_max = 720.0
 anim_offset_max = 1.0
 
-[node name="ResourceSetterNew" type="Node" parent="OverlayLayer/Particles/Leaves" node_paths=PackedStringArray("node_to_affect")]
+[node name="ResourceSetterNew" type="Node" parent="OverlayLayer/Particles/Leaves"]
 script = ExtResource("10_lvidp")
-node_to_affect = NodePath("")
 property_name = "texture"
 mode = 1
 resource_json = ExtResource("28_ugdi7")
@@ -740,7 +736,6 @@ amount = 64
 texture = SubResource("GradientTexture1D_78nlv")
 lifetime = 5.0
 preprocess = 10.0
-fixed_fps = 30
 fract_delta = false
 local_coords = true
 draw_order = 1
