@@ -375,7 +375,7 @@ layout_mode = 2
 theme_override_constants/separation = -4
 script = ExtResource("4_avtty")
 category_name = "SETTINGS_AUDIO"
-options = [NodePath("SelectableOptionNode"), NodePath("SelectableOptionNode2"), NodePath("SelectableOptionNode3"), NodePath("AthleticMusic"), NodePath("SkidSFX"), NodePath("ExtraSFX"), NodePath("MenuBGM")]
+options = [NodePath("SelectableOptionNode"), NodePath("SelectableOptionNode2"), NodePath("SelectableOptionNode3"), NodePath("AthleticMusic"), NodePath("SkidSFX"), NodePath("ExtraSFX"), NodePath("PauseBGM"), NodePath("MenuBGM")]
 
 [node name="Control" type="Control" parent="PanelContainer/MarginContainer/VBoxContainer/Audio"]
 custom_minimum_size = Vector2(0, 4)
@@ -421,6 +421,13 @@ layout_mode = 2
 option_key = "extra_sfx"
 title = "AUDIO_EXTRA_SFX"
 values = ["SETTING_OFF", "SETTING_ON"]
+settings_category = "audio"
+
+[node name="PauseBGM" parent="PanelContainer/MarginContainer/VBoxContainer/Audio" groups=["Options"] instance=ExtResource("3_dl6kk")]
+layout_mode = 2
+option_key = "pause_bgm"
+title = "AUDIO_PAUSE_BGM"
+values = ["SETTING_OFF", "SETTING_MUFFLED", "SETTING_ON"]
 settings_category = "audio"
 
 [node name="MenuBGM" parent="PanelContainer/MarginContainer/VBoxContainer/Audio" groups=["Options"] instance=ExtResource("3_dl6kk")]
@@ -1001,6 +1008,7 @@ script = ExtResource("19_k6yev")
 [connection signal="value_changed" from="PanelContainer/MarginContainer/VBoxContainer/Audio/AthleticMusic" to="PanelContainer/MarginContainer/VBoxContainer/Audio/AudioAdjuster" method="athletic_changed"]
 [connection signal="value_changed" from="PanelContainer/MarginContainer/VBoxContainer/Audio/SkidSFX" to="PanelContainer/MarginContainer/VBoxContainer/Audio/AudioAdjuster" method="skid_changed"]
 [connection signal="value_changed" from="PanelContainer/MarginContainer/VBoxContainer/Audio/ExtraSFX" to="PanelContainer/MarginContainer/VBoxContainer/Audio/AudioAdjuster" method="extra_sfx_changed"]
+[connection signal="value_changed" from="PanelContainer/MarginContainer/VBoxContainer/Audio/PauseBGM" to="PanelContainer/MarginContainer/VBoxContainer/Audio/AudioAdjuster" method="pause_bgm_changed"]
 [connection signal="value_changed" from="PanelContainer/MarginContainer/VBoxContainer/Audio/MenuBGM" to="PanelContainer/MarginContainer/VBoxContainer/Audio/AudioAdjuster" method="menu_bgm_changed"]
 [connection signal="value_changed" from="PanelContainer/MarginContainer/VBoxContainer/Visuals/ParallaxStyle" to="PanelContainer/MarginContainer/VBoxContainer/Visuals/VisualsSetter" method="parallax_style_changed"]
 [connection signal="value_changed" from="PanelContainer/MarginContainer/VBoxContainer/Visuals/BGParticles" to="PanelContainer/MarginContainer/VBoxContainer/Visuals/VisualsSetter" method="bg_particles_changed"]

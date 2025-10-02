@@ -203,7 +203,17 @@ func load_sfx_map(json := {}) -> void:
 func handle_music() -> void:
 	if Global.in_title_screen:
 		current_level_theme = ""
-	AudioServer.set_bus_effect_enabled(1, 0, Global.game_paused)
+	
+	# guzlad: hack in the elif because it doesn't unpause itself like the normal music_player does
+	if Global.game_paused and Settings.file.audio.pause_bgm == 0:
+		AudioManager.music_player.stream_paused = true
+		AudioManager.music_override_player.stream_paused = true
+		return
+	elif AudioManager.music_override_player.stream_paused == true:
+		AudioManager.music_override_player.stream_paused = false
+	
+	AudioServer.set_bus_effect_enabled(1, 0, Global.game_paused and Settings.file.audio.pause_bgm == 1)
+	
 	if is_instance_valid(Global.current_level):
 		if Global.current_level.music == null or current_music_override != MUSIC_OVERRIDES.NONE:
 			music_player.stop()

@@ -128,6 +128,7 @@ SETTINGS_DATA,,Data,Données,,,Datos,Dati,,,Daten,Verİler,Data,Dados,データ
 SETTINGS_RESOURCE_PACK,,Resource Packs,Packs de Ressources,Paczki Zasobów,tekctУp-пakи,Paquetes de recursos,Pacchetti di risorse,ＲＥＳＯＵＲＣＥ ＰＡＣＫＳ,Resource Packs,Ressourcenpakete,Kaynak Paketlerİ,Paket Resource,Pacotes de Recurso,リソースパック
 SETTING_ON,"might change to just be true or false, instead. idk",On,On,Wł.,bkл.,Activado,On,ＯＮ,On,An,Açık,Aktif,Ligado,オン
 SETTING_OFF,,Off,Off,Wył.,bыkл.,Desactivado,Off,ＯＦＦ,Off,Aus,Kapalı,Mati,Desligado,オフ
+SETTING_MUFFLED,,Muffled,,,,,,,,,,,,
 VIDEO_MODE,"windowed, fullscreen, etc",Mode,Mode,Tryb,peжиm,Modo,Modalità video,ＭＯＤＥ,Mode,Fenstermodus,Pencere Modu,Mode,Modo,ウィンドウモード
 VIDEO_SIZE,"aspect ratio (4:3, widescreen)",Size,Taille,Wielkość,paзmep,Tamaño,Formato schermo,ＳＩＺＥ,Sukat ng Screen,Seitenverhältnis,En Boy Oranı,Ukuran,Proporção,かいぞうど
 VIDEO_RENDER,,Rendering,Rendu,Renderowanie,pehдepиhг,Renderizardo,Rendering,ＲＥＮＤＥＲＩＮＧ,,,Görselleştİrme,Rendering,Renderização,レンダリング
@@ -151,6 +152,7 @@ AUDIO_MUSIC,,Music,Musique,Muzyka,mУзыka,Música,Musica,ＭＵＳＩＣ,Musik
 AUDIO_SFX,,SFX,Effets Sonores,Efekty Dźwiękowe,Эффektы,SFX,SFX,ＳＦＸ,SFX,Soundeffekte,Ses Efektlerİ,Efek Suara,Efeitos Sonoros,SFX
 AUDIO_EXTRA_BGM,"Setting to enable or disable extra music tracks in game (bonus theme, athletic theme, bowser theme)",Extra BGM,Musiques En Plus,Muzyka Atletyczna,Эkctpa BGM,Música de fondo adicional,BGM extra,ＥＸＴＲＡ ＢＧＭ,Extrang Musika,Extramusik,Ekstra Müzİk,BGM Ekstra,BGM Extra,ついかBGM
 AUDIO_EXTRA_SFX,Adds in some other optional sfxs from SMBDX and the modern games,Extra SFX,Effets Sonores En Plus,Dodatkowe Efekty Dźwiękowe,Эkctpa SFX,Efectos de sonido adicionales,SFX extra,ＥＸＴＲＡ ＳＦＸ,Extrang SFX,Extra-Soundeffekte,Ekstra Ses Efektlerİ,SFX Ekstra,SFX Extra,ついかSFX
+AUDIO_PAUSE_BGM,,Pause Menu BGM,,,,,,,,,,,,
 AUDIO_MENU_BGM,You win.,Menu BGM,Musique Menu,Muzyka Menu,BGM mehю,Música de fondo del menú,BGM del menu,ＭＥＮＵ ＢＧＭ,Musika sa Menu,Menümusik,Menü Müzİk,Menu BGM,BGM do Menu,メニューBGM
 AUDIO_SKID_SFX,Enables the skidding sfx from Lost Levels,Skid SFX,Bruit Dérapage,Dźwięki Hamowania,ЗbУk ckoльжehия,Effectos de derrape,Skid SFX,ＳＫＩＤ ＳＦＸ,SFX ng skid,Rutsch-Soundeffekt,Kayma Ses Efektİ,Efek Suara Selip,SFX de Derrapagem,スキールおん
 VISUALS_PARALLAX,Sets the amount of parallax used in BG's,Parallax,Parallaxe,Paralaks,Пapaллakc,Paralaje,Effetto parallasse,ＰＡＲＡＬＬＡＸ,Naka-parallax,Parallaxeneffekt,Paralaks,Paralaks,Parallax,ラスター
